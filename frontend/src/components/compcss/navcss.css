@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=League+Spartan:wght@100..900&display=swap');
 .navdiv{
   
   height:80px;
@@ -6,11 +7,17 @@
   /* justify-content: center; */
   display:flex;
   align-items: center;
-  background-color:#140442;
+  background-color:#19376D;
+}
+.logooj{
+  height:60px;
+  width:60px;
+  margin-left:50px;
+  margin-right:30px;
+  border-radius:100%;
 }
 li,
-a,
-button {
+a {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 20px;
@@ -24,6 +31,8 @@ button {
   align-items: center;
 }
 .logo {
+  font-family: "League Spartan",sans-serif;
+  font-size:40px;
   color:white;
   margin-left:40px;
   cursor: pointer;
@@ -43,6 +52,7 @@ button {
   padding: 0px 15px;
 }
 .nav-links li a {
+  font-size:24px;
   transition: all 0.3s ease 0s;
 }
 .nav-links li a:hover {
@@ -64,5 +74,6 @@ button:hover {
 }
 .logoutdiv{
   display:flex;
+  justify-content:right;
   align-items: center;
 }

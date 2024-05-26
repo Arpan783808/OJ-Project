@@ -3,6 +3,7 @@ import { useCookies } from "react-cookie";
 import "./compcss/navcss.css";
 import {useNavigate} from "react-router-dom";
 import logoutlogo from  "../assets/logoutlogo.png"
+import logogoj from "../assets/logooj.png";
 const Navbar =()=>{
     const navigate=useNavigate();
     const [cookies, removeCookie] = useCookies([]);
@@ -22,6 +23,7 @@ const Navbar =()=>{
     return (
         <>
         <div class ="navdiv">
+            <img src={logogoj} className="logooj" />
         <h1 class="logo">Codester</h1>
         <nav>
             <ul class="nav-links">
