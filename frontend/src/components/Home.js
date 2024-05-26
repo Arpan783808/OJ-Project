@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import Desktop from "./desktop.js";
+import Navbar from "./navbar.jsx";
+
 const Home = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
@@ -34,6 +37,8 @@ const Home = () => {
   };
   return (
     <>
+      <Desktop />
+      <Navbar />
       <div className="home_page">
         <h4>
           {" "}
