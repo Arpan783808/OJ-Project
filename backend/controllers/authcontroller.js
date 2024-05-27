@@ -10,7 +10,7 @@ export const login = async (req, res, next) => {
     }
     const user = await User.findOne({ email });
     if (!user) {
-      return res.json({ message: "1Incorrect password or email" });
+      return res.json({ message: "Incorrect password or email" });
     }
     const auth = await bcrypt.compare(password, user.password);
     if (!auth) {
@@ -62,25 +62,28 @@ export const signup = async (req, res, next) => {
 
 export const create = async (req, res, next) => {
   try {
+    console.log("request");
     const { problemname, description, testcases } = req.body;
+    console.log(problemname + description + testcases.input + testcases.output);
     const probfound = await problem.findOne({ problemname });
     if (probfound) {
-      return res.json({ message: "problem already exist" });
+      console.log("not created");
+      return res.json({ message: "problem already exist", success: false });
     }
     const Problem = await problem.create({
       problemname,
       description,
-      testcases
+      testcases,
     });
     await Problem.save();
-    res.json({
-      message: "problem created",
-      success: true,
-      probid: problem._id,
+    return res.status(201).json({
+      message: "problem created successfully",
+      success: true
     });
     next();
   } catch (error) {
     console.log(error.message);
+    res.status(500).send("Server error");
   }
 };
 

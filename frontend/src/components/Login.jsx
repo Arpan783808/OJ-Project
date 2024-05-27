@@ -76,7 +76,7 @@ const Login = () => {
           />
         </div>
         <div>
-          <label className="email"htmlFor="password">Password</label>
+          <label className="email" htmlFor="password">Password</label>
           <input
             type="password"
             name="password"

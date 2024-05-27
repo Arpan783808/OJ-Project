@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const ProblemSchema = new mongoose.Schema({
   problemname: { type: String, required: true, unique: true },
   description: { type: String, required: true, unique: true },
-  testCases: [
+  testcases: [
     {
       input: { type: String, required: true },
       output: { type: String, required: true }
