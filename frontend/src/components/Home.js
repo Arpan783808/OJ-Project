@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Desktop from "./desktop.js";
 import Navbar from "./navbar.jsx";
+import "./compcss/home.css";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -37,16 +38,17 @@ const Home = () => {
   };
   return (
     <>
-      <Desktop />
-      <Navbar />
-      <div className="home_page">
-        <h4>
-          {" "}
-          Welcome <span>{username}</span>
-        </h4>
-        
+      <div className="home_page1" >
+        <Desktop />
+        <Navbar />
+        <div className="home_page">
+          <h4>
+            {" "}
+            Welcome <span>{username}</span>
+          </h4>
+        </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </>
   );
 };

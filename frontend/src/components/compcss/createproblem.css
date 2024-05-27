@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=League+Spartan:wght@100..900&display=swap");
+.full {
+  height: 100%;
+  width: 100%;
+  background-color: #bcead5;
+}
+.form-container {
+  width: 60%;
+  height: 75%;
+  margin: 0 auto;
+  margin-top: 70px;
+  padding: 20px;
+  background-color: #def5e5;
+  box-shadow: 0 0 1000px rgba(12, 1, 1, 0.1);
+  border-radius: 20px;
+}
+.heading {
+  color: #2C3333;
+  font-family: "Anton", sans-serif;
+  font-size: 50px;
+}
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.form {
+  height: 80%;
+}
+
+.form-group {
+  color:#092635;
+  margin-left: 14%;
+  margin-bottom: 15px;
+  width: 70%;
+  text-align: center;
+}
+
+.form-group label {
+    color:#2C3333;
+  display: block;
+  margin-bottom: 5px;
+  text-decoration:underline 2px;
+  font-size: 20px;
+  font-family: "Anton", sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+.input {
+  width: 39%;
+  border-radius: 5px;
+  resize: vertical;
+  height: 80px;
+}
+.test-cases-container {
+  font-size: 20px;
+  margin-left: 14%;
+  font-size: 40px;
+  font-family: "Anton", sans-serif;
+  margin-bottom: 15px;
+}
+.test-cases-container label{
+    color:#2C3333;
+    font-size:20px;
+    text-decoration:underline 2px;
+}
+.test-case {
+  display: flex;
+  gap: 5%;
+  margin-bottom: 10px;
+}
+
+.test-case input {
+  flex: 1;
+}
+
+.button-container {
+  text-align: center;
+}
+.buttondiv {
+  display: flex;
+  justify-content: center;
+  margin-right: 14%;
+}
+.button-container {
+  height:60px;
+  width:220px;
+  margin-top: 80px;
+  padding: 10px 20px;
+  background-color: #2C3333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.button-container:hover {
+  background-color: #439a97;
+}

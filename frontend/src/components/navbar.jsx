@@ -4,6 +4,7 @@ import "./compcss/navcss.css";
 import {useNavigate} from "react-router-dom";
 import logoutlogo from  "../assets/logoutlogo.png"
 import logogoj from "../assets/logooj.png";
+
 const Navbar =()=>{
     const navigate=useNavigate();
     const [cookies, removeCookie] = useCookies([]);
@@ -12,31 +13,36 @@ const Navbar =()=>{
     navigate("/login");
     };
     const navHome=()=>{
-        navigate("");
+        navigate("/");
     }
     const navCompiler=()=>{
-        navigate("");
+        navigate("/compiler");
     }
     const navProblem=()=>{
-        navigate("");
+        navigate("/problem");
+    }
+    const navCreate=()=>{
+        navigate("/create");
     }
     return (
         <>
-        <div class ="navdiv">
+        <nav class ="navdiv">
             <img src={logogoj} className="logooj" />
         <h1 class="logo">Codester</h1>
-        <nav>
+        <div>
             <ul class="nav-links">
-                <li><a href="#" onClick={navHome}>Home</a> </li>
-                <li><a href="#" onClick={navProblem}>Problems</a> </li>
-                <li><a href="#" onClick={navCompiler}>Compiler</a> </li>
+                <li><a href="" onClick={navHome}>Home</a> </li>
+                <li><a href="" onClick={navProblem}>Problems</a> </li>
+                <li><a href="" onClick={navCreate}>Create</a> </li>
+                <li><a href="" onClick={navCompiler}>Compiler</a> </li>
             </ul>
-        </nav>
-        <div className="logoutdiv">
+        </div>
+          <div className="logoutdiv">
             <img src={logoutlogo} className="logout" />
             <a href="#" class="cta" onClick={Logout}>Logout </a>
         </div>
-        </div>
+        </nav>
+        
         </>
     )
 }

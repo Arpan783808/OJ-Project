@@ -3,6 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import "./compcss/signup.css";
+import rocket from "../assets/rocket.png"
+
+
 const Signup = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
@@ -59,11 +63,13 @@ const Signup = () => {
   };
 
   return (
+    <div className="signupfull">
+    <img src={rocket} className="rocket" />
     <div className="form_container">
       <h2>Signup Account</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="email">Email</label>
+          <label className="email" htmlFor="email">Email</label>
           <input
             type="email"
             name="email"
@@ -72,8 +78,8 @@ const Signup = () => {
             onChange={handleOnChange}
           />
         </div>
-        <div>
-          <label htmlFor="email">Username</label>
+        <div >
+          <label className="email" htmlFor="email">Username</label>
           <input
             type="text"
             name="username"
@@ -83,7 +89,7 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label className="email" htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
@@ -92,12 +98,13 @@ const Signup = () => {
             onChange={handleOnChange}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button className="sub" type="submit">Submit</button>
         <span>
           Already have an account? <Link to={"/login"}>Login</Link>
         </span>
       </form>
       <ToastContainer />
+    </div>
     </div>
   );
 };
