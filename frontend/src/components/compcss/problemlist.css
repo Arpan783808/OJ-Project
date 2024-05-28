@@ -1,0 +1,64 @@
+/* src/components/ProblemList.css */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=League+Spartan:wght@100..900&display=swap');
+.fullproblem {
+  background-color: #CAF4FF;
+  width: 120%;
+  height:100%;
+}
+.undernav{
+    
+    background-color:#A0DEFF ;
+    border-radius:30px;
+    height:83%;
+    width:95%;
+    position:relative;
+    left:2.4%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+.problem-list-container{
+    
+    margin-left:50px;
+    margin-right:50px;
+}
+.problem-list-container h2 {
+    font-family: "Anton",sans-serif;
+    font-size:60px;
+  text-align: center;
+  margin-bottom: 20px;
+  color:white;
+  letter-spacing: 4px;
+}
+
+.problem-list-container input {
+  font-size: 20px;
+  background-color: #CAF4FF;
+  width: 30%;
+  height:40px;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  border:none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.problem-list {
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 20px;
+}
+
+.problem-item {
+  height:60%;
+  width:20%;
+  font-size: 30px;
+  background-color:#CAF4FF;
+  padding-left: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+#problembutton{
+  position:relative;
+}
+

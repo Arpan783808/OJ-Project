@@ -62,6 +62,7 @@ const Login = () => {
   return (
     <div className="signupfull">
       <img src={rocket} className="rocket" />
+      <h1>Codester</h1>
     <div className="form_container1 form_container">
       <h2>Login Account</h2>
       <form onSubmit={handleSubmit}>

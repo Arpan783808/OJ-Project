@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Desktop from "./desktop.js";
 import Navbar from "./navbar.jsx";
 import "./compcss/home.css";
-
+import Footer from  "./footer.jsx";
 const Home = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
@@ -38,7 +38,7 @@ const Home = () => {
   };
   return (
     <>
-      <div className="home_page1" >
+      <div className="home_page1">
         <Desktop />
         <Navbar />
         <div className="home_page">
@@ -47,6 +47,7 @@ const Home = () => {
             Welcome <span>{username}</span>
           </h4>
         </div>
+        <Footer />
         <ToastContainer />
       </div>
     </>

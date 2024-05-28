@@ -64,7 +64,10 @@ const Signup = () => {
 
   return (
     <div className="signupfull">
+      
+      
     <img src={rocket} className="rocket" />
+    <h1>Codester</h1>
     <div className="form_container">
       <h2>Signup Account</h2>
       <form onSubmit={handleSubmit}>
@@ -104,6 +107,7 @@ const Signup = () => {
         </span>
       </form>
       <ToastContainer />
+    
     </div>
     </div>
   );

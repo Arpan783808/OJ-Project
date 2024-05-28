@@ -1,0 +1,45 @@
+.footer {
+  margin-top: 30px;
+  height: 15%;
+  width: 100%;
+  background-color: #19376d;
+  z-index: 1;
+}
+.logofoot {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+}
+.logoname {
+  margin-right: 14.5%;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-left: 50px;
+  color: white;
+  font-size: 20px;
+}
+.footdiv {
+  width: 100%;
+  height: 60%;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 400px;
+}
+
+.linkto {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.linksto a {
+  font-size: 25px;
+  margin-right:100px;
+}
+.copyright{
+    color:#CDE8E5;
+    display: flex;
+    justify-content: center;
+}

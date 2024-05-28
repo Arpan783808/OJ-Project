@@ -32,18 +32,18 @@
   margin-left: 14%;
   margin-bottom: 15px;
   width: 70%;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .form-group label {
     color:#2C3333;
   display: block;
   margin-bottom: 5px;
-  text-decoration:underline 2px;
+  /* text-decoration:underline 2px; */
   font-size: 20px;
   font-family: "Anton", sans-serif;
   letter-spacing: 1px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .form-group input,
@@ -74,7 +74,7 @@
 .test-cases-container label{
     color:#2C3333;
     font-size:20px;
-    text-decoration:underline 2px;
+    /* text-decoration:underline 2px; */
 }
 .test-case {
   display: flex;

@@ -1,6 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
 label {
   font-size: 1.2rem;
   color: #656262;
+}
+.signupfull h1{
+  font-family: "League Spartan",sans-serif;
+    font-size: 250px;
+    position: absolute;
+    right:45%;
+    color:#FEFAF6;
+    border:#1d267d;
+    letter-spacing:-5px;
+
 }
 .signupfull {
   background-color: #a5d7e8;
@@ -9,9 +20,11 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10%;
+  gap: 7%;
 }
-
+.home_page{
+  height:40%;
+}
 .rocket {
   height: 800px;
   width: 800px;
@@ -24,7 +37,7 @@ label {
   width: 500px;
   height: 480px;
   /* border:1px solid black;  */
-  box-shadow: 8px 8px 24px 0px rgb(8, 14, 77);
+  box-shadow: 4px 4px 24px 4px rgb(60, 120, 241);
 }
 .form_container1 {
   background-color: white;
@@ -33,7 +46,7 @@ label {
   width: 500px;
   height: 400px;
   /* border:1px solid black;  */
-  box-shadow: 8px 8px 24px 0px rgb(8, 14, 77);
+  box-shadow: 4px 4px 24px 4px rgb(60, 120, 241);
 }
 .email {
   color: black;
@@ -145,4 +158,17 @@ span a {
 }
 .sub1:hover {
   background-color: #1c82ad;
+}
+@media only screen and (max-width:1400px){
+  .signupfull h1{
+    display: none;
+  }
+  .rocket{
+    display: none;
+  }
+}
+@media only screen and (max-width:1500px){
+  .signupfull h1{
+    font-size: 200px;
+  }
 }

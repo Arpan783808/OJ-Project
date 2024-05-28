@@ -5,8 +5,10 @@ import Home from "./components/Home";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import CreateProblem from "./components/create.jsx";
-import compiler from "./components/compiler.js"
+import compiler from "./components/compiler.js";
+import ProblemList from "./components/problemlist.jsx"
 import "./app.css";
+import Problemdetails from "./components/problemdetails.jsx";
 function App() {
   return (
     <div className="App" >
@@ -16,6 +18,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/create" element={<CreateProblem />}/>
         <Route path="/compiler" element={<compiler />} />
+        <Route path="/problems" element={<ProblemList />} />
+        <Route path="/getproblem/:id" element={<Problemdetails />}/>
       </Routes>
     </div>
   );

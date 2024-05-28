@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./compcss/createproblem.css";
 import Navbar from "./navbar.jsx";
 import { useNavigate } from "react-router-dom";
+import Footer from "./footer.jsx"
 const CreateProblem = () => {
   const [problemname, setProblemName] = useState('');
   const [description, setDescription] = useState('');
@@ -88,8 +89,10 @@ const CreateProblem = () => {
         </div >
         
       </form>
+      
       <ToastContainer />
     </div>
+    <Footer />
     </div>
   );
 };

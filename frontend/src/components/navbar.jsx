@@ -19,7 +19,7 @@ const Navbar =()=>{
         navigate("/compiler");
     }
     const navProblem=()=>{
-        navigate("/problem");
+        navigate("/problems");
     }
     const navCreate=()=>{
         navigate("/create");

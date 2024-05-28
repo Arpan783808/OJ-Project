@@ -2,6 +2,8 @@ import User from "../models/User.js";
 import createsecrettoken from "../util/secrettoken.js";
 import bcrypt from "bcryptjs";
 import problem from "../models/problem.js";
+
+
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -86,10 +88,36 @@ export const create = async (req, res, next) => {
     res.status(500).send("Server error");
   }
 };
-
+export const getAllProblems = async (req, res) => {
+  const { problemname } = req.query;
+  try {
+    let query = {};
+    if (problemname) {
+      query.problemname = { $regex: problemname, $options: "i" }; // Case-insensitive search
+    }
+    const problems = await problem.find(query);
+    res.json(problems);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 // export const showproblem=async(req,res,next)=>{
 //   try{
 
 //   }
 
 // }
+export const getproblembyid= async (req,res) =>{
+  const { id } = req.params;
+  try{
+  const Problem=await problem.findById(id);
+  if(!Problem){
+    return res.json({message:"problem not found"});
+  }
+  res.json(Problem);
+  }
+  catch(error){
+    console.log(error);
+    res.json({ message : error.message});
+  } 
+}
