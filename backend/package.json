@@ -11,11 +11,15 @@
   "description": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "child_process": "^1.0.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.4.0"
+    "mongoose": "^8.4.0",
+    "path": "^0.12.7",
+    "url": "^0.11.3",
+    "uuid": "^9.0.1"
   }
 }

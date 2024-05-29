@@ -9,6 +9,8 @@ import Footer from "./footer.jsx"
 const CreateProblem = () => {
   const [problemname, setProblemName] = useState('');
   const [description, setDescription] = useState('');
+  const [outputformat, setOutputformat] = useState('');
+  const [inputformat, setInputformat] = useState('');
   const [testcases, setTestCases] = useState([{ input: '', output: '' }]);
   const navigate = useNavigate();
   
@@ -41,58 +43,77 @@ const CreateProblem = () => {
     }
   };
   return (
-    < div className="full">
-    <Navbar />
-    <div className="form-container">
-      <h2 className="heading">CREATE A NEW PROBLEM</h2>
-      <form   onSubmit={handleSubmit} className="form">
-        <div className="form-group">
-          <label>TITLE</label>
-          <input
-            type="text"
-            value={problemname}
-            onChange={(e) => setProblemName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>DESCRIPTION</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </div>
-        <div className="test-cases-container">
-          <label>TEST CASES</label>
-          {testcases.map((testcase, index) => (
-            <div key={index} className="test-case">
-              <textarea className="input"
-                type="text"
-                placeholder="Input"
-                value={testcase.input}
-                onChange={(e) => handleTestCaseChange(index, 'input', e.target.value)}
-                required
-              />
-              <textarea className="input"
-                type="text"
-                placeholder="Output"
-                value={testcase.output}
-                onChange={(e) => handleTestCaseChange(index, 'output', e.target.value)}
-                required
-              />
-            </div>
-          ))}
-          <div className="buttondiv">
-          <button type="submit" className="button-container" >Create Problem</button>
+    <div className="full">
+      <Navbar />
+      <div className="form-container">
+        <h2 className="heading">CREATE A NEW PROBLEM</h2>
+        <form onSubmit={handleSubmit} className="form">
+          <div className="form-group">
+            <label>TITLE</label>
+            <input
+              type="text"
+              value={problemname}
+              onChange={(e) => setProblemName(e.target.value)}
+              required
+            />
           </div>
-        </div >
-        
-      </form>
-      
-      <ToastContainer />
-    </div>
-    <Footer />
+          <div className="form-group">
+            <label>DESCRIPTION</label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+            <label>Input Format</label>
+            <textarea
+              value={inputformat}
+              onChange={(e) => setInputformat(e.target.value)}
+              required
+            />
+            <label>Output Format</label>
+            <textarea
+              value={outputformat}
+              onChange={(e) => setOutputformat(e.target.value)}
+              required
+            />
+          </div>
+          <div className="test-cases-container">
+            <label>TEST CASES</label>
+            {testcases.map((testcase, index) => (
+              <div key={index} className="test-case">
+                <textarea
+                  className="input"
+                  type="text"
+                  placeholder="Input"
+                  value={testcase.input}
+                  onChange={(e) =>
+                    handleTestCaseChange(index, "input", e.target.value)
+                  }
+                  required
+                />
+                <textarea
+                  className="input"
+                  type="text"
+                  placeholder="Output"
+                  value={testcase.output}
+                  onChange={(e) =>
+                    handleTestCaseChange(index, "output", e.target.value)
+                  }
+                  required
+                />
+              </div>
+            ))}
+            <div className="buttondiv">
+              <button type="submit" className="button-container">
+                Create Problem
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <ToastContainer />
+      </div>
+      <Footer />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from "./navbar.jsx";
+import Compilernav from "./compilernav.jsx";
 import { useParams} from 'react-router-dom';
 import './compcss/problemdetails.css';
 import Footer from "./footer.jsx";
@@ -41,28 +41,21 @@ const Problemdetails=()=>{
   if (!problem) return <div>Loading...</div>;
 
   return (   
-       
-    <div className="problem-details-container"> 
-    <Navbar />     
-    <div className="problemcompiler">  
-      <div className="problemdetail">
-        <h2>{problem.problemname}</h2>
-        <p>{problem.description}</p>
+    <div className="fullpageproblemcompiler">
+      <Compilernav />
+      <div className="problemandcompiler">
+        <div className="problemdetails">
+
+        </div>
+        <div className="compilerandoutput">
+          <div className="compileralone">
+
+          </div>
+          <div className="output">
+            
+          </div>
+        </div>
       </div>
-      <div className="compiler1">
-      <textarea
-        value={code}
-        onChange={handleCodeChange}
-        placeholder="Write your code here"
-      />
-      <button onClick={handleRunCode}>Run Code</button>
-      <div className="output-container">
-        <h3>Output:</h3>
-        <pre>{output}</pre>
-      </div>
-      </div>
-    </div>
-    <Footer />
     </div>
     
   );
