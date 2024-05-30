@@ -103,7 +103,7 @@ const CreateProblem = () => {
         <h2 className="heading">CREATE A NEW PROBLEM</h2>
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
-            <label>TITLE</label>
+            <label>Title</label>
             <input
               type="text"
               name="problemName"

@@ -1,0 +1,57 @@
+.compilernav{
+    margin-bottom:0px;
+    height:10%;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:40px;
+    background-color: #9FE8FA;
+}
+.homebutton{
+    margin-top:12px;
+    height:60%;
+    width:6%;
+    border-radius: 20px;
+    font-size: 25px;
+    background-color: #EFFFFD;
+    box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
+    cursor:pointer;
+    border:none;
+}
+.homebutton:hover{
+    color:white;
+    background-color:#448EF6;
+}
+.runbutton{
+    background-color: #EFFFFD;
+    height:60%;
+    width:6%;
+    cursor:pointer;
+    font-size:25px;
+    border-radius: 20px;
+    margin-top:10px;
+    border:none;
+    box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
+
+}
+.runbutton:hover{
+    background-color:#448EF6;
+    color:white;
+}
+.selectlang{
+    box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
+    margin-top:12px;
+    height:60%;
+    width:6%;
+    border-radius: 20px;
+    font-size:24px;
+    padding-left:20px;
+    background-color: #EFFFFD;
+    cursor:pointer;
+    border:none;
+}
+.selectlang:hover{
+    color:white;
+    background-color: #448EF6;
+}

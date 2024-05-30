@@ -1,25 +1,29 @@
 /* src/components/ProblemList.css */
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=League+Spartan:wght@100..900&display=swap');
 .fullproblem {
-  background-color: #CAF4FF;
+  background-color: white;
   width: 120%;
   height:100%;
 }
 .undernav{
-    
-    background-color:#A0DEFF ;
+    background-color:#68b9fb ;
     border-radius:30px;
-    height:83%;
-    width:95%;
+    height:90%;
+    width:95.5%;
     position:relative;
     left:2.4%;
+    overflow:auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     
 }
-.problem-list-container{
-    
+.problem-list-container{    
+  background-color: #68b9fb;
+  border-radius: 30px;
+  border:none;
     margin-left:50px;
     margin-right:50px;
+    margin-bottom:20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .problem-list-container h2 {
     font-family: "Anton",sans-serif;
@@ -32,33 +36,59 @@
 
 .problem-list-container input {
   font-size: 20px;
-  background-color: #CAF4FF;
+  background-color: white;
   width: 30%;
   height:40px;
   padding: 10px;
   margin-bottom: 30px;
   border-radius: 10px;
+  margin-left:30px;
   border:none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .problem-list {
+  padding:40px;
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-direction: column;
   gap: 20px;
 }
-
+.problemfulldetails{
+  display:flex;
+  flex-direction: row;
+  gap:50px;
+}
+.alltagsshow{
+  display:flex;
+  flex-direction: row;
+  gap:10px;
+  font-size:20px;
+  color:black;
+  overflow: auto;
+  /* align-items: center; */
+}
 .problem-item {
-  height:60%;
-  width:20%;
-  font-size: 30px;
-  background-color:#CAF4FF;
+  height:78px;
+  width:18%;
+  font-size: 20px;
+  color:black;
+  background-color:white;
   padding-left: 20px;
+  /* padding-top:10px; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
-#problembutton{
-  position:relative;
+.singletagshow{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color:white;
+  border-radius: 20px;
+  display: inline;
+  padding-left:20px;
+  padding-right:20px;
+  
+  /* padding-top:5px; */
+  height:78px;
+  text-align: center;
+  /* padding-bottom:40px; */
 }
-
