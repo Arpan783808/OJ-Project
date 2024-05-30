@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useParams} from 'react-router-dom';
 import './compcss/problemdetails.css';
 import Judgenav from "./judgenav.jsx";
-
+import Handletestcase from "./handletestcase.jsx";
 const Problemdetails=()=>{
     const {id}=useParams();
     const [problem, setProblem] = useState(null);
@@ -13,6 +13,8 @@ const Problemdetails=()=>{
     const [view,setView] =useState('');
     const [output1,setOutput1]=useState('');
     const [language,setLanguage]=useState('cpp');
+    const [verdict,setVerdict]=useState('');
+    const [passed,setPassed]=useState('1');
     useEffect(()=>{
         const fetchProblem=async()=>{
             try{
@@ -48,18 +50,37 @@ const Problemdetails=()=>{
     };
 
   
-  const handleJudge=()=>{}
+  const handleJudge=async(e)=>{
+    e.preventDefault();
+    setView('verdict');
+    const result=await axios.post("http://localhost:5000/judge",{
+      code,language,id
+    });
+    setPassed(result.testcase);
+    console.log(passed);
+    if(!result.success){
+        setVerdict("error");
+    }
+    else{
+      setVerdict("accepted");
+    }
+  }
   const handleView=(e)=>{
     setView(e.target.value);
   }
   const handleInputChange=(e)=>{
     setInput(e.target.value);
   }
+  
   if (!problem) return <div>Loading...</div>;
    
   return (
     <div className="fullpageproblemcompiler">
-      <Judgenav language={language} handleSubmit={handleSubmit} setLanguage={setLanguage} />
+      <Judgenav
+        language={language}
+        handleSubmit={handleSubmit}
+        setLanguage={setLanguage}
+      />
       <button className="submitbutton" onClick={handleJudge}>
         Submit
       </button>
@@ -107,6 +128,16 @@ const Problemdetails=()=>{
               <div className="inputview">
                 <h2>Output</h2>
                 {output1 && <div className="output2">{output1}</div>}
+              </div>
+            )}
+            {view === "verdict" && (
+              <div className="inputview">
+                <Handletestcase passed={passed}/>
+                {verdict === "error" && <h2 style={{ color: "red" }}>Error</h2>}
+                {verdict != "error" && <h2 style={{ color: "red" }}>Error</h2>}
+                <div className="testcaseresult">
+                  <h3>testcase {passed} failed</h3>
+                </div>
               </div>
             )}
           </div>

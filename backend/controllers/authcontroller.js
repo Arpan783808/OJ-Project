@@ -2,9 +2,11 @@ import User from "../models/User.js";
 import createsecrettoken from "../util/secrettoken.js";
 import bcrypt from "bcryptjs";
 import problem from "../models/problem.js";
-import {generateFilePaths,ensureCodesDirectory} from "../generateFile.js";
-import {executeCode} from "./executecode.js";
+import { generateFilePaths, ensureCodesDirectory } from "../generateFile.js";
+import { executeCode } from "./executecode.js";
 import fs from "fs";
+import axios from "axios";
+
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -64,33 +66,32 @@ export const signup = async (req, res, next) => {
 };
 
 export const create = async (req, res, next) => {
-  
-    console.log("request");
-    const { problemName, description, testCases,tags } = req.body;
-    // console.log(problemname + description + testcases.input + testcases.output);
-    const probfound = await problem.findOne({ problemName });
-    console.log(problemName+description+testCases+tags);
-    if (probfound) {
-      console.log("not created");
-      return res.json({ message: "problem already exist", success: false });
-    }
-    try {
-      const Problem = await problem.create({
-        problemName,
-        description,
-        testCases,
-        tags,
-      });
-      await Problem.save();
-      return res.status(201).json({
-        message: "problem created successfully",
-        success: true,
-      });
-      next();
-    } catch (error) {
-      console.log(error);
-      res.status(500).send({ success: false, message: "Server error" });
-    }
+  console.log("request");
+  const { problemName, description, testCases, tags } = req.body;
+  // console.log(problemname + description + testcases.input + testcases.output);
+  const probfound = await problem.findOne({ problemName });
+  console.log(problemName + description + testCases + tags);
+  if (probfound) {
+    console.log("not created");
+    return res.json({ message: "problem already exist", success: false });
+  }
+  try {
+    const Problem = await problem.create({
+      problemName,
+      description,
+      testCases,
+      tags,
+    });
+    await Problem.save();
+    return res.status(201).json({
+      message: "problem created successfully",
+      success: true,
+    });
+    next();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ success: false, message: "Server error" });
+  }
 };
 export const getAllProblems = async (req, res) => {
   const { problemName } = req.query;
@@ -111,78 +112,100 @@ export const getAllProblems = async (req, res) => {
 //   }
 
 // }
-export const getproblembyid= async (req,res) =>{
+export const getproblembyid = async (req, res) => {
   const { id } = req.params;
-  try{
-  const Problem=await problem.findById(id);
-  if(!Problem){
-    return res.json({message:"problem not found"});
-  }
-  res.json(Problem);
-  }
-  catch(error){
+  try {
+    const Problem = await problem.findById(id);
+    if (!Problem) {
+      return res.json({ message: "problem not found" });
+    }
+    res.json(Problem);
+  } catch (error) {
     console.log(error);
-    res.json({ message : error.message});
-  } 
+    res.json({ message: error.message });
+  }
 };
 
-export const runcode =async(req,res)=>{
+export const runcode = async (req, res) => {
+  const { language = "cpp", code, input } = req.body;
+  if (!code) {
+    return res.status(400).json({ error: "Code  is required" });
+  }
+  console.log("entered");
+  ensureCodesDirectory();
+  const { codePath, inputPath, outputPath } = generateFilePaths(language);
+  const hasInput = Boolean(input);
 
-     
-     const { language = "cpp", code,input } = req.body;   
-     if (!code ) {
-       return res
-         .status(400)
-         .json({ error: "Code  is required" });
-     }  
-     console.log("entered");
-     ensureCodesDirectory();     
-     const { codePath, inputPath, outputPath } = generateFilePaths(language);
-     const hasInput = Boolean(input);
+  try {
+    fs.writeFileSync(codePath, code);
+    console.log(`Successfully wrote code to ${codePath}`);
+  } catch (error) {
+    console.error(`Error writing code to ${codePath}: ${error}`);
+    return res
+      .status(500)
+      .json({ error: `Error writing code file: ${error.message}` });
+  }
 
-     try {
-       fs.writeFileSync(codePath, code);
-       console.log(`Successfully wrote code to ${codePath}`);
-     } catch (error) {
-       console.error(`Error writing code to ${codePath}: ${error}`);
-       return res
-         .status(500)
-         .json({ error: `Error writing code file: ${error.message}` });
-     }
-
-     try {
-       if (hasInput) {
-         fs.writeFileSync(inputPath, input);
-         console.log(`Successfully wrote input to ${inputPath}`);
-       } else {
-         // Ensure the input file is empty if no input is provided
-         fs.writeFileSync(inputPath, "");
-         console.log(
-           `No input provided, created empty input file at ${inputPath}`
-         );
-       }
-     } catch (error) {
-       console.error(`Error writing input to ${inputPath}: ${error}`);
-       return res
-         .status(500)
-         .json({ error: `Error writing input file: ${error.message}` });
-     }
-    //  console.log(fs.readFileSync);
-     executeCode(
-       language,
-       codePath,
-       inputPath,
-       outputPath,
-       hasInput,
-       (error, stdout, stderr) => {
-         if (error) {
-          return res.status(500).json({ error: stderr });
-           
-         }
-         const output = fs.readFileSync(outputPath, "utf-8");
-         console.log(stdout);
-         res.json({ output});
-       }
-     );
-   
+  try {
+    if (hasInput) {
+      fs.writeFileSync(inputPath, input);
+      console.log(`Successfully wrote input to ${inputPath}`);
+    } else {
+      // Ensure the input file is empty if no input is provided
+      fs.writeFileSync(inputPath, "");
+      console.log(
+        `No input provided, created empty input file at ${inputPath}`
+      );
+    }
+  } catch (error) {
+    console.error(`Error writing input to ${inputPath}: ${error}`);
+    return res
+      .status(500)
+      .json({ error: `Error writing input file: ${error.message}` });
+  }
+  //  console.log(fs.readFileSync);
+  executeCode(
+    language,
+    codePath,
+    inputPath,
+    outputPath,
+    hasInput,
+    (error, stdout, stderr) => {
+      if (error) {
+        return res.status(500).json({ error: stderr });
+      }
+      const output = fs.readFileSync(outputPath, "utf-8");
+      console.log(stdout);
+      res.json({ output });
+    }
+  );
+};
+export const judge = async (req, res) => {
+  const { language = "cpp", code, id } = req.body;
+  const Problem = await problem.findById(id);
+  const testcase=Problem.testCases;
+      try{
+      for(var i=0;i<testcase.length;i++){
+            const input=testcase[i].input;
+            const result = await axios.post("http://localhost:5000/run", {
+              code,
+              language,
+              input,
+            });
+            // console.log(result.data);
+            if (result.data.output != testcase[i].expectedOutput) {
+              console.log("testcase failed");
+              return res.send({
+                success: false,
+                message: "testcase failed",
+                testcase: i,
+              });
+              break;
+            }
+      }
+      }
+      catch(error){
+        console.log(error.message);
+        return res.json({ success: false ,message:error.message});
+      }   
 };

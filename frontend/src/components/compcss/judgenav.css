@@ -11,7 +11,7 @@
 .homebutton{
     margin-top:12px;
     height:60%;
-    width:6%;
+    width:130px;
     border-radius: 20px;
     font-size: 25px;
     background-color: #EFFFFD;
@@ -26,7 +26,7 @@
 .runbutton{
     background-color: #EFFFFD;
     height:60%;
-    width:6%;
+    width:130px;
     cursor:pointer;
     font-size:25px;
     border-radius: 20px;
@@ -43,7 +43,7 @@
     box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
     margin-top:12px;
     height:60%;
-    width:6%;
+    width:130px;
     border-radius: 20px;
     font-size:24px;
     padding-left:20px;

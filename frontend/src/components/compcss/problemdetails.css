@@ -103,6 +103,9 @@
 .viewbox{
   height:22.5%;
   width:97%;
+  overflow:auto;
+  resize:none;
+  /* flex-grow: 1; */
 }
 .inputview{
   padding:20px;
@@ -113,7 +116,18 @@
   border-radius:30px;
   background-color: white;
   resize:none;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   overflow: auto;
   box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
+}
+.testcaseresult{
+  height:40px;
+  width:200px;
+  background-color: rgb(210, 40, 6);
+  color:white;
+  border-radius: 15px;
+  /* padding:10px; */
+  text-align:center;
+  /* vertical-align:bottom; */
+  /* padding-top:1px; */
 }
