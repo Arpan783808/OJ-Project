@@ -64,37 +64,40 @@ export const signup = async (req, res, next) => {
 };
 
 export const create = async (req, res, next) => {
-  try {
+  
     console.log("request");
-    const { problemname, description, testcases } = req.body;
-    console.log(problemname + description + testcases.input + testcases.output);
-    const probfound = await problem.findOne({ problemname });
+    const { problemName, description, testCases,tags } = req.body;
+    // console.log(problemname + description + testcases.input + testcases.output);
+    const probfound = await problem.findOne({ problemName });
+    console.log(problemName+description+testCases+tags);
     if (probfound) {
       console.log("not created");
       return res.json({ message: "problem already exist", success: false });
     }
-    const Problem = await problem.create({
-      problemname,
-      description,
-      testcases,
-    });
-    await Problem.save();
-    return res.status(201).json({
-      message: "problem created successfully",
-      success: true
-    });
-    next();
-  } catch (error) {
-    console.log(error.message);
-    res.status(500).send("Server error");
-  }
+    try {
+      const Problem = await problem.create({
+        problemName,
+        description,
+        testCases,
+        tags,
+      });
+      await Problem.save();
+      return res.status(201).json({
+        message: "problem created successfully",
+        success: true,
+      });
+      next();
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ success: false, message: "Server error" });
+    }
 };
 export const getAllProblems = async (req, res) => {
-  const { problemname } = req.query;
+  const { problemName } = req.query;
   try {
     let query = {};
-    if (problemname) {
-      query.problemname = { $regex: problemname, $options: "i" }; // Case-insensitive search
+    if (problemName) {
+      query.problemName = { $regex: problemName, $options: "i" }; // Case-insensitive search
     }
     const problems = await problem.find(query);
     res.json(problems);

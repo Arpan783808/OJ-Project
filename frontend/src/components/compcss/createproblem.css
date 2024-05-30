@@ -1,16 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=League+Spartan:wght@100..900&display=swap");
+.form-container textarea {
+  resize:none;
+}
+
 .full {
   height: 100%;
   width: 100%;
-  background-color: #bcead5;
+  background-color: white;
 }
 .form-container {
-  width: 60%;
-  height: 75%;
+  width: 80%;
+  height: 150%;
   margin: 0 auto;
   margin-top: 70px;
   padding: 20px;
-  background-color: #def5e5;
+  background-color: #8ac6f7;
   box-shadow: 0 0 1000px rgba(12, 1, 1, 0.1);
   border-radius: 20px;
 }
@@ -45,23 +49,84 @@
   letter-spacing: 1px;
   /* text-align: center; */
 }
-
+.individualtag{
+ 
+  margin-left:10px;
+  background-color: white;
+  height:35px;
+  font-size:20px;
+  border-radius: 6px;
+  border:none;
+}
+.textarea{
+  border: none;
+  border-radius: 10px;
+  
+}
+.test-cases-container{
+  display:flex;
+  overflow-y: auto;
+  gap:20px;
+}
+.addtestcasebutton{
+  margin-left:45%;
+  height:40px;
+  width:10%;
+  font-size:20px;
+  color:black;
+  background-color: white;
+  cursor:pointer;
+  border-radius: 6px;
+  border:none;
+}
+.taglabel{
+  color: black;
+  margin-left:50%;
+  margin-top:20px;
+  font-size: 25px;
+}
+.addtagbutton{
+  margin-top:20px;
+  height:40px;
+  width:100px;
+  font-size:18px;
+  margin-left:45%;
+  background-color: white;
+  cursor:pointer;
+  border-radius: 6px;
+  border:none;
+}
+.testcaselabel{
+  color:black;
+  font-size:25px;
+  margin-left:45%;
+}
+.alltags{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
 .form-group input,
 .form-group textarea {
   width: 100%;
+  
   padding: 10px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 5px;
 }
 
 .form-group textarea {
-  resize: vertical;
+  /* resize: vertical; */
   height: 100px;
+  border: none;
+  font-size: 20px;
+  border-radius: 20px;
 }
 .input {
   width: 39%;
   border-radius: 5px;
-  resize: vertical;
+  /* resize: vertical; */
   height: 80px;
 }
 .test-cases-container {
@@ -92,7 +157,8 @@
 .buttondiv {
   display: flex;
   justify-content: center;
-  margin-right: 14%;
+  align-items: center;
+  
 }
 .button-container {
   height:60px;
@@ -109,4 +175,31 @@
 
 .button-container:hover {
   background-color: #439a97;
+}
+.addtestcasebutton:hover,.removebutton:hover,.addtagbutton:hover{
+  background-color: #2C3333;
+  color:white;
+}
+.removebutton{
+  font-size:18px;
+  height:30px;
+  width:25%;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  border:none;
+  margin-left: 10px;
+  margin-top:10px;
+}
+.textarea{
+  font-size:30px;
+}
+.form-group input{
+  height:30px;
+  font-size:20px;
+}
+.individualtestcase textarea{
+  font-size:20px;
+  border:none;
+  border-radius:10px;
 }

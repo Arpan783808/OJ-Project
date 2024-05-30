@@ -1,16 +1,28 @@
 import mongoose from "mongoose";
 
-const ProblemSchema = new mongoose.Schema({
-  problemname: { type: String, required: true, unique: true },
-  description: { type: String, required: true, unique: true },
-  testcases: [
-    {
-      input: { type: String, required: true },
-      output: { type: String, required: true }
-    }
-  ]
+const { Schema } = mongoose;
 
+const testCaseSchema = new Schema(
+  {
+    input: { type: String, required: true },
+    expectedOutput: { type: String, required: true },
+  },
+  { _id: false }
+);
+
+
+const problemSchema = new Schema({
+  problemName: { type: String, required: true ,unique:true},
+  description: {
+    statement: { type: String, required: true },
+    inputFormat: { type: String, required: true },
+    outputFormat: { type: String, required: true },
+  },
+  tags:  [String] , 
+  testCases:  [testCaseSchema]  
 });
 
-const problem = mongoose.model("Problem",ProblemSchema);
+// Create the Problem model
+const problem = mongoose.model("problem", problemSchema);
+
 export default problem;

@@ -5,41 +5,95 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./compcss/createproblem.css";
 import Navbar from "./navbar.jsx";
 import { useNavigate } from "react-router-dom";
-import Footer from "./footer.jsx"
-const CreateProblem = () => {
-  const [problemname, setProblemName] = useState('');
-  const [description, setDescription] = useState('');
-  const [outputformat, setOutputformat] = useState('');
-  const [inputformat, setInputformat] = useState('');
-  const [testcases, setTestCases] = useState([{ input: '', output: '' }]);
-  const navigate = useNavigate();
-  
-  const handleTestCaseChange = (index, field, value) => {
-    const newTestCases = [...testcases];
-    newTestCases[index][field] = value;
-    setTestCases(newTestCases);
+import Footer from "./footer.jsx";
+
+
+const CreateProblem = () => {  
+  const [formData, setFormData] = useState({
+    problemName: "",
+    description:{
+      statement: "",
+      inputFormat: "",
+      outputFormat: "",
+    },
+    tags: [""],
+    testCases: [{input:"",expectedOutput:""}],
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name.startsWith('description.')) {
+      const [_, key] = name.split('.');
+      setFormData({
+        ...formData,
+        description: {
+          ...formData.description,
+          [key]: value
+        }
+      });
+    } 
+    else if (name.startsWith('tags.')) {
+      const index = parseInt(name.split('.')[1], 10);
+      const tags = [...formData.tags];
+      tags[index] = value;
+      setFormData({ ...formData, tags });
+    } else if (name.startsWith('testCases.')) {
+      const [_, index, key] = name.split('.');
+      const testCases = [...formData.testCases];
+      testCases[index][key] = value;
+      setFormData({ ...formData, testCases });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
-    const inputvalue={problemname,description,testcases};
+  const addTag = () => {
+    setFormData({
+      ...formData,
+      tags: [...formData.tags, ""],
+    });
+  };
+
+  const removeTag = (index) => {
+    const tags = formData.tags.filter((_, i) => i !== index);
+    setFormData({ ...formData, tags });
+  };
+  const removeTest=(index)=>{
+    const testCases=formData.testCases.filter((_,i) => (i!==index));
+    setFormData({...formData,testCases});
+  }
+  const addTestCase = () => {
+    setFormData({
+      ...formData,
+      testCases: [...formData.testCases, { input: "", expectedOutput: "" }],
+    });
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/create', {
-        ...inputvalue,
+      const data = {
+        ...formData,
+        tags: formData.tags.filter((tag) => tag.trim()), // Filter out any empty tags
+      };
+      console.log(data.testCases);
+      const response=await axios.post("http://localhost:5000/create", data);
+      const {success,message}=response.data;
+      if(success) toast.success(message,{position:'bottom-right'});
+      else  toast.error(message, { position: "bottom-left" });  
+      setFormData({
+        problemName: "",
+        description: {
+          statement: "",
+          inputFormat: "",
+          outputFormat: "",
+        },
+        tags: [""],
+        testCases: [{ input: "", expectedOutput: "" }],
       });
-      const { success, message} = response.data;
-      console.log(response);
-      if (success) {
-        toast.success(message, {
-        position: "bottom-right",     
-        });
-        navigate("/create");
-      } else {
-        toast.error(message, {
-        position: "bottom-left",
-        });
-      }  
     } catch (error) {
-      alert('Failed to create problem');
+      console.error("Error saving problem:", error);
+      alert("Error saving problem. Please try again.");
     }
   };
   return (
@@ -52,62 +106,134 @@ const CreateProblem = () => {
             <label>TITLE</label>
             <input
               type="text"
-              value={problemname}
-              onChange={(e) => setProblemName(e.target.value)}
+              name="problemName"
+              value={formData.problemName}
+              onChange={handleChange}
               required
             />
           </div>
           <div className="form-group">
-            <label>DESCRIPTION</label>
+            <label>Statement</label>
             <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              id="statement"
+              name="description.statement"
+              value={formData.description.statement}
+              onChange={handleChange}
               required
             />
             <label>Input Format</label>
             <textarea
-              value={inputformat}
-              onChange={(e) => setInputformat(e.target.value)}
+              id="inputFormat"
+              name="description.inputFormat"
+              value={formData.description.inputFormat}
+              onChange={handleChange}
               required
             />
             <label>Output Format</label>
             <textarea
-              value={outputformat}
-              onChange={(e) => setOutputformat(e.target.value)}
+              id="outputFormat"
+              name="description.outputFormat"
+              value={formData.description.outputFormat}
+              onChange={handleChange}
               required
             />
           </div>
-          <div className="test-cases-container">
-            <label>TEST CASES</label>
-            {testcases.map((testcase, index) => (
-              <div key={index} className="test-case">
-                <textarea
-                  className="input"
+          <label className="taglabel">Tags:</label>
+          <br />
+          <br />
+          <div className="alltags">
+            {formData.tags.map((tag, index) => (
+              <div key={index}>
+                <input
+                  className="individualtag"
                   type="text"
-                  placeholder="Input"
-                  value={testcase.input}
-                  onChange={(e) =>
-                    handleTestCaseChange(index, "input", e.target.value)
-                  }
+                  id={`tag-${index}`}
+                  name={`tags.${index}`}
+                  value={tag}
+                  onChange={handleChange}
                   required
                 />
-                <textarea
-                  className="input"
-                  type="text"
-                  placeholder="Output"
-                  value={testcase.output}
-                  onChange={(e) =>
-                    handleTestCaseChange(index, "output", e.target.value)
-                  }
-                  required
-                />
+                <button
+                  className="individualtag removebutton"
+                  type="button"
+                  onClick={() => removeTag(index)}
+                >
+                  Remove
+                </button>
               </div>
             ))}
-            <div className="buttondiv">
-              <button type="submit" className="button-container">
-                Create Problem
-              </button>
-            </div>
+          </div>
+          <button type="button" onClick={addTag} className="addtagbutton">
+            Add Tag
+          </button>
+          <br />
+          <br />
+          <label className="testcaselabel">Test Cases:</label>
+          <div className="test-cases-container">
+            {formData.testCases.map((testCase, index) => (
+              <div className="individualtestcase" key={index}>
+                <label
+                  htmlFor={`input-${index}`}
+                  style={{
+                    marginRight: "10px",
+                    fontFamily: "none",
+                    color: "black",
+                    fontSize: "25px",
+                    letterSpacing: "0px",
+                  }}
+                >
+                  Input:
+                </label>
+
+                <textarea
+                  id={`input-${index}`}
+                  name={`testCases.${index}.input`}
+                  value={testCase.input}
+                  onChange={handleChange}
+                  required
+                />
+                <br />
+                <label
+                  htmlFor={`expectedOutput-${index}`}
+                  style={{
+                    marginRight: "10px",
+                    fontFamily: "none",
+                    color: "black",
+                    fontSize: "25px",
+                    letterSpacing: "0px",
+                  }}
+                >
+                  Expected Output:
+                </label>
+
+                <textarea
+                  id={`expectedOutput-${index}`}
+                  name={`testCases.${index}.expectedOutput`}
+                  value={testCase.expectedOutput}
+                  onChange={handleChange}
+                  required
+                />
+                <button
+                  className="removebutton"
+                  type="button"
+                  onClick={() => removeTest(index)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+          </div>
+          <button
+            className="addtestcasebutton"
+            type="button"
+            onClick={addTestCase}
+          >
+            Add Test Case
+          </button>
+          <div className="buttondiv">
+            <button type="submit" className="button-container">
+              Create Problem
+            </button>
           </div>
         </form>
 
@@ -119,3 +245,47 @@ const CreateProblem = () => {
 };
 
 export default CreateProblem;
+
+
+
+
+
+
+// const [problemName, setProblemName] = useState('');
+  // const [description, setDescription] = useState('');
+  // const [outputFormat, setOutputformat] = useState('');
+  // const [inputFormat, setInputformat] = useState('');
+  // const [testCases, setTestCases] = useState([{ input: '', output: '' }]);
+  // const navigate = useNavigate();
+  
+  // const handleTestCaseChange = (index, field, value) => {
+  //   const newTestCases = [...testCases];
+  //   newTestCases[index][field] = value;
+  //   setTestCases(newTestCases);
+  // };
+  // description={statement,inputFormat,outputFormat};
+  // tags
+  // const inputvalue={problemName,description,testCases,tags};
+  
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post('http://localhost:5000/create', {
+  //       ...inputvalue,
+  //     });
+  //     const { success, message} = response.data;
+  //     console.log(response);
+  //     if (success) {
+  //       toast.success(message, {
+  //       position: "bottom-right",     
+  //       });
+  //       navigate("/create");
+  //     } else {
+  //       toast.error(message, {
+  //       position: "bottom-left",
+  //       });
+  //     }  
+  //   } catch (error) {
+  //     alert('Failed to create problem');
+  //   }
+  // };
