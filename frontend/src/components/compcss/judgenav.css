@@ -10,7 +10,7 @@
 }
 .homebutton{
     margin-top:12px;
-    height:60%;
+    height:60px;
     width:130px;
     border-radius: 20px;
     font-size: 25px;
@@ -24,8 +24,9 @@
     background-color:#448EF6;
 }
 .runbutton{
+    z-index:1;
     background-color: #EFFFFD;
-    height:60%;
+    height:60px;
     width:130px;
     cursor:pointer;
     font-size:25px;
@@ -42,7 +43,7 @@
 .selectlang{
     box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
     margin-top:12px;
-    height:60%;
+    height:60px;
     width:130px;
     border-radius: 20px;
     font-size:24px;
@@ -54,4 +55,19 @@
 .selectlang:hover{
     color:white;
     background-color: #448EF6;
+}
+@media only screen and (min-width:900px){
+    .homephoto{
+        visibility: hidden;
+    }
+}
+@media only screen and (max-width:900px){
+    .homebutton{
+        visibility: hidden;
+    }
+    .homephoto{
+        margin-left:40%;
+        visibility: visible;
+        cursor:pointer;
+    }
 }

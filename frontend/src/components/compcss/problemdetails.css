@@ -9,7 +9,7 @@
 }
 .problemandcompiler{
   width: 100%;
-  height:100%;  
+  height:90%;  
   display:flex;
 }
 .problemdetails{
@@ -42,9 +42,8 @@
   overflow-x: auto;
   height:60%;
   border-radius: 30px;
-  resize:vertical;
-  overflow: auto;
-  flex-grow: 1;
+  resize:none;
+  
   width:95%;
   background-color: white;
   box-shadow: 2px 2px 24px 4px rgb(89, 175, 255);
@@ -55,7 +54,7 @@
   background-color: #EFFFFD;
     height:60px;
     
-    width:6%;
+    width:130px;
     cursor:pointer;
     font-size:25px;
     border-radius: 20px;
@@ -83,9 +82,9 @@
   align-items: center;
 }
 .viewset button{
-  font-size:20px;
-  height:40px;
-  width:100px;
+  font-size:24px;
+  height:50px;
+  width:120px;
   background-color: #448EF6;
   cursor:pointer;
   border:none;
@@ -103,7 +102,7 @@
 .viewbox{
   height:22.5%;
   width:97%;
-  overflow:auto;
+  flex-grow:1;
   resize:none;
   /* flex-grow: 1; */
 }
@@ -130,4 +129,18 @@
   text-align:center;
   /* vertical-align:bottom; */
   /* padding-top:1px; */
+}
+.testcaseresult {
+  display: inline;
+}
+pre {
+  font-size:20px;
+  white-space: pre-wrap; /* Ensure that newlines and white spaces are preserved */
+  word-wrap: break-word; /* Break long words to prevent overflow */
+}
+@media only screen and (max-width:1200px) {
+  .submitbutton{
+    position:absolute;
+    margin-left:10%;
+  }
 }

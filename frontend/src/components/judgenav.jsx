@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./compcss/judgenav.css";
-
+import homephoto from "../assets/homephoto.png";
 
 const Judgenav = ({  language,setLanguage,handleSubmit}) => {
   const navigate = useNavigate();
   return (
     <nav className="compilernav">
+      <img src={homephoto} className="homephoto" onClick={()=>{navigate("/")}} />
       <button
+
         className="homebutton"
         onClick={() => {
           navigate("/");

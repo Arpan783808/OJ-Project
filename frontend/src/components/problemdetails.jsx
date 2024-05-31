@@ -100,9 +100,9 @@ const Problemdetails = () => {
           <h2>Output Format</h2>
           <p>{problem.description.outputFormat}</p>
           <h2>Input</h2>
-          <p>{problem.testCases[0].input}</p>
+          <pre>{problem.testCases[0].input}</pre>
           <h2>Output</h2>
-          <p>{problem.testCases[0].expectedOutput}</p>
+          <pre>{problem.testCases[0].expectedOutput}</pre>
         </div>
         <div className="compilerandoutput">
           <textarea

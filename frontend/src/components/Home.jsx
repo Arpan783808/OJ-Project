@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Desktop from "./desktop.js";
+import Desktop from "./desktop.jsx";
 import Navbar from "./navbar.jsx";
 import "./compcss/home.css";
 import Footer from  "./footer.jsx";
