@@ -5,6 +5,7 @@ import problem from "../models/problem.js";
 import { generateFilePaths, ensureCodesDirectory } from "../generateFile.js";
 import { executeCode } from "./executecode.js";
 import fs from "fs";
+import compareOutput from "./compare.js";
 import axios from "axios";
 
 export const login = async (req, res, next) => {
@@ -183,29 +184,32 @@ export const runcode = async (req, res) => {
 export const judge = async (req, res) => {
   const { language = "cpp", code, id } = req.body;
   const Problem = await problem.findById(id);
-  const testcase=Problem.testCases;
-      try{
-      for(var i=0;i<testcase.length;i++){
-            const input=testcase[i].input;
-            const result = await axios.post("http://localhost:5000/run", {
-              code,
-              language,
-              input,
-            });
-            // console.log(result.data);
-            if (result.data.output != testcase[i].expectedOutput) {
-              console.log("testcase failed");
-              return res.send({
-                success: false,
-                message: "testcase failed",
-                testcase: i,
-              });
-              break;
-            }
+  const testcase = Problem.testCases;
+  try {
+    for (var i = 0; i < testcase.length; i++) {
+      const input = testcase[i].input;
+      const result = await axios.post("http://localhost:5000/run", {
+        code,
+        language,
+        input,
+      });
+      // console.log(result.data);
+      // console.log(result.data);
+      console.log(testcase[i].expectedOutput);
+      const isCorrect=compareOutput(result.data.output,testcase[i].expectedOutput);
+      if (!isCorrect) {
+        console.log("testcase failed");
+        return res.send({
+          success: false,
+          message: `testcase {i} failed`,
+          testcase: i,
+        });
       }
-      }
-      catch(error){
-        console.log(error.message);
-        return res.json({ success: false ,message:error.message});
-      }   
+    }
+    console.log("passed");
+    return res.json({success:true,message:"testcases passed",testcase:testcase.length});
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
+  }
 };

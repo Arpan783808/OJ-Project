@@ -1,79 +1,85 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-import { useParams} from 'react-router-dom';
-import './compcss/problemdetails.css';
+import { useParams } from "react-router-dom";
+import "./compcss/problemdetails.css";
 import Judgenav from "./judgenav.jsx";
 import Handletestcase from "./handletestcase.jsx";
-const Problemdetails=()=>{
-    const {id}=useParams();
-    const [problem, setProblem] = useState(null);
-    const [code, setCode] = useState('');
-    const [input, setInput] = useState('');
-    const [view,setView] =useState('');
-    const [output1,setOutput1]=useState('');
-    const [language,setLanguage]=useState('cpp');
-    const [verdict,setVerdict]=useState('');
-    const [passed,setPassed]=useState('1');
-    useEffect(()=>{
-        const fetchProblem=async()=>{
-            try{
-                const response=await axios.get(`http://localhost:5000/getproblembyid/${id}`);
-                setProblem(response.data);
-            }
-            catch(error){
-                console.log('error fetching problem' ,error);
-            }
-        };
-        fetchProblem();
-    },[id]);
-    
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      
+const Problemdetails = () => {
+  const { id } = useParams();
+  const [problem, setProblem] = useState(null);
+  const [code, setCode] = useState("");
+  const [input, setInput] = useState("");
+  const [view, setView] = useState("");
+  const [output1, setOutput1] = useState("");
+  const [language, setLanguage] = useState("cpp");
+  const [verdict, setVerdict] = useState("");
+  const [passed, setPassed] = useState();
+  const [message, setMessage] = useState("");
+  useEffect(() => {
+    const fetchProblem = async () => {
       try {
-        setView("output");
-        console.log("enter");
-        setOutput1("compiling...");
-        console.log(language);
-        const response = await axios.post("http://localhost:5000/run", {
-          code,
-          language,
-          input,
-        });
-        console.log(response.data);
-        setOutput1(response.data.output);
+        const response = await axios.get(
+          `http://localhost:5000/getproblembyid/${id}`
+        );
+        setProblem(response.data);
       } catch (error) {
-        console.error("code compilation failed", error);
-        setOutput1(error.response?.data?.error || error.message);
+        console.log("error fetching problem", error);
       }
     };
+    fetchProblem();
+  }, [id]);
 
-  
-  const handleJudge=async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setView('verdict');
-    const result=await axios.post("http://localhost:5000/judge",{
-      code,language,id
+
+    try {
+      setView("output");
+      console.log("enter");
+      setOutput1("compiling...");
+      console.log(language);
+      const response = await axios.post("http://localhost:5000/run", {
+        code,
+        language,
+        input,
+      });
+      console.log(response.data);
+      setOutput1(response.data.output);
+    } catch (error) {
+      console.error("code compilation failed", error);
+      setOutput1(error.response?.data?.error || error.message);
+    }
+  };
+
+  const handleJudge = async (e) => {
+    e.preventDefault();
+    setView("verdict");
+    setVerdict("Compiling...");
+    const response = await axios.post("http://localhost:5000/judge", {
+      code,
+      language,
+      id,
     });
-    setPassed(result.testcase);
+    setPassed(response.data.testcase);
     console.log(passed);
-    if(!result.success){
-        setVerdict("error");
+    setMessage(response.data.message);
+    if(response.data.success){
+      setVerdict("Accepted");
     }
     else{
-      setVerdict("accepted");
+      setVerdict("Failed");
     }
-  }
-  const handleView=(e)=>{
+  };
+  console.log(verdict);
+  const handleView = (e) => {
     setView(e.target.value);
-  }
-  const handleInputChange=(e)=>{
+  };
+  const handleInputChange = (e) => {
     setInput(e.target.value);
-  }
-  
+  };
+
   if (!problem) return <div>Loading...</div>;
-   
+
   return (
     <div className="fullpageproblemcompiler">
       <Judgenav
@@ -86,6 +92,7 @@ const Problemdetails=()=>{
       </button>
       <div className="problemandcompiler">
         <div className="problemdetails">
+          <h1>{problem.problemName}</h1>
           <h2>Description</h2>
           <p>{problem.description.statement}</p>
           <h2>Input Format</h2>
@@ -132,12 +139,21 @@ const Problemdetails=()=>{
             )}
             {view === "verdict" && (
               <div className="inputview">
-                <Handletestcase passed={passed}/>
-                {verdict === "error" && <h2 style={{ color: "red" }}>Error</h2>}
-                {verdict != "error" && <h2 style={{ color: "red" }}>Error</h2>}
-                <div className="testcaseresult">
-                  <h3>testcase {passed} failed</h3>
-                </div>
+                {verdict === "Accepted" && (
+                  <h2 style={{ color: "green" }}>Accepted</h2>
+                )}
+                {verdict === "Failed" && (
+                  <h2 style={{ color: "red" }}>Failed</h2>
+                )}
+                {verdict === "Compiling..." && (
+                  <h2 style={{ color:"grey" }}>Compiling...</h2>
+                )}
+                <Handletestcase passed={passed} />
+                {verdict === "Failed" && (
+                  <div className="testcaseresult">
+                    <h3>{message}</h3>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -145,6 +161,5 @@ const Problemdetails=()=>{
       </div>
     </div>
   );
-
-}
+};
 export default Problemdetails;

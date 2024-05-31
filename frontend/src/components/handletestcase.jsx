@@ -5,7 +5,8 @@ const Handletestcase = (passed) => {
         {
             height:"30px",
             width:"100px",
-            color:"green",
+            color:"white",
+            backgroundColor:"green",
             textAlign:"center"
         }
     }>
