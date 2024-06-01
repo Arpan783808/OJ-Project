@@ -1,0 +1,55 @@
+.updatefullpage {
+  height: 100%;
+  width:100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow-y: auto;
+  gap:40px;
+ 
+}
+.updatefullpage form {
+    padding:30px;
+    width:90%;
+    height:73%;
+    background-color: #8ac6f7;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 30px;
+  box-shadow: 4px 4px 50px 4px rgb(129, 202, 245);
+}
+.updatefullpage form label{
+    font-size:35px;
+    margin-bottom:10px;
+    color:black;
+    text-align: left;
+}
+.updatefullpage form textarea{
+    padding:20px;
+    font-size:20px;
+    height:33%;
+    resize: none;
+    overflow-y:auto;
+    overflow-x: auto;
+    width:90%;
+    border-radius: 25px;
+    border:none;
+    
+}
+
+.updatefullpage button{
+    height:60px;
+    width:120px;
+    font-size:24px;
+    border-radius: 10px;
+    border: none;
+    background-color:#2C3333 ;
+    color: white;
+    cursor: pointer;
+    
+}
+.updatefullpage button:hover{
+    background-color: #439a97;
+}

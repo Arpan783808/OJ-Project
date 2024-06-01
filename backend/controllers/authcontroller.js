@@ -213,3 +213,40 @@ export const judge = async (req, res) => {
     return res.json({ success: false, message: error.message });
   }
 };
+
+export const deleteproblem = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const Problem = await problem.findByIdAndDelete(id);
+    if (!Problem) {
+      return res.json({ message: "problem not found",success:false });
+    }
+    res.json({message:"problem deleted successfully",success:true});
+  } catch (error) {
+    console.log(error);
+    res.json({ message: error.message,success:false });
+  }
+};
+export const update=async(req,res)=>{
+  const {id}=req.params;
+  const { statement, inputFormat, outputFormat } = req.body;
+  const updatedFields = {
+    "description.statement": statement,
+    "description.inputFormat": inputFormat,
+    "description.outputFormat": outputFormat,
+  };
+  try {
+    const Problem = await problem.findByIdAndUpdate(id, {
+      $set: updatedFields,
+    });
+    if (!Problem) {
+      return res.json({ message: "problem not found",success:false });
+      
+    }
+    res.json({ message: "problem updated successfully", success: true });
+    console.log(Problem.problemName);
+  } catch (error) {
+    console.log(error);
+    res.json({ message: error.message, success: false });
+  }
+}

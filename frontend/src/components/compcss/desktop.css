@@ -36,7 +36,7 @@
 }
 .welcome-to-the {
   margin: 0;
-  font-size:150px;
+  font-size: 150px;
 }
 .welcome-to-the-container1 {
   width: 100%;
@@ -68,8 +68,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding-top:10px;
-  padding-bottom:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
@@ -106,5 +106,10 @@
     padding-left: var(--padding-xl);
     padding-right: var(--padding-xl);
     box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 1040px) {
+  .welcome-to-the {
+    font-size: 90px;
   }
 }

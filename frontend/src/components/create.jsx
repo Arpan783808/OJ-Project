@@ -151,7 +151,6 @@ const CreateProblem = () => {
                   name={`tags.${index}`}
                   value={tag}
                   onChange={handleChange}
-                  required
                 />
                 <button
                   className="individualtag removebutton"
@@ -190,7 +189,7 @@ const CreateProblem = () => {
                   name={`testCases.${index}.input`}
                   value={testCase.input}
                   onChange={handleChange}
-                  required
+                  
                 />
                 <br />
                 <label
@@ -211,7 +210,7 @@ const CreateProblem = () => {
                   name={`testCases.${index}.expectedOutput`}
                   value={testCase.expectedOutput}
                   onChange={handleChange}
-                  required
+                
                 />
                 <button
                   className="removebutton"

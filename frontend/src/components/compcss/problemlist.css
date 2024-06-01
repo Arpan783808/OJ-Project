@@ -55,6 +55,7 @@
 }
 .problemfulldetails{
   display:flex;
+  align-items: center;
   flex-direction: row;
   gap:50px;
 }
@@ -68,6 +69,7 @@
   /* align-items: center; */
 }
 .problem-item {
+  padding:10px;
   height:78px;
   width:18%;
   font-size: 20px;
@@ -91,4 +93,16 @@
   height:78px;
   text-align: center;
   /* padding-bottom:40px; */
+}
+.deletelogo img{
+  height:70px;
+  /* padding-top:10px; */
+  cursor:pointer;
+}
+.deletelogo,.updatebutton{
+  background-color: transparent;
+  border: none;
+  font-size:20px;
+  color:white;
+  cursor:pointer;
 }

@@ -70,4 +70,8 @@
         visibility: visible;
         cursor:pointer;
     }
+    .runbutton,.homebutton,.selectlang{
+        height:50px;
+        width:100px;
+    }
 }

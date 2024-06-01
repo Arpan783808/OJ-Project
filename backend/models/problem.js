@@ -4,8 +4,8 @@ const { Schema } = mongoose;
 
 const testCaseSchema = new Schema(
   {
-    input: { type: String, required: true },
-    expectedOutput: { type: String, required: true },
+    input: { type: String },
+    expectedOutput: { type: String},
   },
   { _id: false }
 );

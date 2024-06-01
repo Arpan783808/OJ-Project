@@ -4,7 +4,7 @@ import  Signup from "./components/Signup.jsx";
 import Home from "./components/Home";
 
 import CreateProblem from "./components/create.jsx";
-
+import Update from "./components/update.jsx";
 import ProblemList from "./components/problemlist.jsx"
 import "./app.css";
 import Problemdetails from "./components/problemdetails.jsx";
@@ -20,6 +20,7 @@ function App() {
         <Route path="/problems" element={<ProblemList />} />
         <Route path="/getproblem/:id" element={<Problemdetails />}/>
         <Route path="/compiler" element={<Compiler />} />
+        <Route path="/update/:id" element={<Update />} />
       </Routes>
     </div>
   );

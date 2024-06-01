@@ -22,7 +22,9 @@ const Problemdetails = () => {
         const response = await axios.get(
           `http://localhost:5000/getproblembyid/${id}`
         );
+        
         setProblem(response.data);
+        console.log(problem);
       } catch (error) {
         console.log("error fetching problem", error);
       }

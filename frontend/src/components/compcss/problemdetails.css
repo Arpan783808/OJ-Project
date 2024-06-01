@@ -1,132 +1,131 @@
-.fullpageproblemcompiler{
+.fullpageproblemcompiler {
   height: 100%;
-  width:100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #9FE8FA;
+  background-color: #9fe8fa;
   /* justify-content: center; */
   /* align-items: center; */
 }
-.problemandcompiler{
+.problemandcompiler {
   width: 100%;
-  height:90%;  
-  display:flex;
+  height: 90%;
+  display: flex;
 }
-.problemdetails{
-  padding:30px;
-  height:90%;
-  width:40%;
-  resize:horizontal;
+.problemdetails {
+  padding: 30px;
+  height: 90%;
+  width: 40%;
+  resize: horizontal;
   overflow: auto;
   overflow-y: auto;
   overflow-x: auto;
-  margin-top:20px;
-  background-color:white;
-  margin-left:20px;
+  margin-top: 20px;
+  background-color: white;
+  margin-left: 20px;
   border-radius: 30px;
   box-shadow: 2px 2px 24px 4px rgb(89, 175, 255);
 }
-.compilerandoutput{
-  margin-top:20px;
-  height:95%;
-  width:60%;
+.compilerandoutput {
+  margin-top: 20px;
+  height: 95%;
+  width: 60%;
   flex-grow: 1;
-  background-color:#9FE8FA;
-  margin-left:30px;
-  margin-right:20px;
+  background-color: #9fe8fa;
+  margin-left: 30px;
+  margin-right: 20px;
 }
-.compileralone{
-  padding:30px;
-  font-size:20px;
+.compileralone {
+  padding: 30px;
+  font-size: 20px;
   overflow-y: auto;
   overflow-x: auto;
-  height:60%;
+  height: 60%;
   border-radius: 30px;
-  resize:none;
-  
-  width:95%;
+  resize: none;
+
+  width: 95%;
   background-color: white;
   box-shadow: 2px 2px 24px 4px rgb(89, 175, 255);
-  border:none;
+  border: none;
 }
-.submitbutton{
-  position:absolute;
-  background-color: #EFFFFD;
-    height:60px;
-    
-    width:130px;
-    cursor:pointer;
-    font-size:25px;
-    border-radius: 20px;
-    margin-top:25px;
-    margin-left:70%;
-    border:none;
-    box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
-}
-.submitbutton:hover{
+.submitbutton {
+  position: absolute;
+  background-color: #effffd;
+  height: 70px;
 
-  background-color:#448EF6;
+  width: 130px;
+  cursor: pointer;
+  font-size: 25px;
+  border-radius: 20px;
+  margin-top: 25px;
+  margin-left: 70%;
+  border: none;
+  box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
 }
-.problemdetails h2{
-  font-size:34px;
+.submitbutton:hover {
+  background-color: #448ef6;
 }
-.problemdetails p{
-  font-size:20px;
+.problemdetails h2 {
+  font-size: 35px;
 }
-.viewset{
-  margin-top:15px;
-  margin-bottom:15px;
-  display:flex;
-  gap:30px;
+.problemdetails p {
+  font-size: 25px;
+}
+.viewset {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  gap: 30px;
   justify-content: center;
   align-items: center;
 }
-.viewset button{
-  font-size:24px;
-  height:50px;
-  width:120px;
-  background-color: #448EF6;
-  cursor:pointer;
-  border:none;
+.viewset button {
+  font-size: 24px;
+  height: 60px;
+  width: 120px;
+  background-color: #448ef6;
+  cursor: pointer;
+  border: none;
   border-radius: 10px;
-  color:white;
+  color: white;
 }
-.viewset button:hover{
-  background-color:#EFFFFD;
-  color:black;
+.viewset button:hover {
+  background-color: #effffd;
+  color: black;
 }
-.viewset button:focus{
-  background-color:#EFFFFD;
-  color:black;
+.viewset button:focus {
+  background-color: #effffd;
+  color: black;
 }
-.viewbox{
-  height:22.5%;
-  width:97%;
-  flex-grow:1;
-  resize:none;
+.viewbox {
+  height: 22.5%;
+  width: 97%;
+  flex-grow: 1;
+  resize: none;
   /* flex-grow: 1; */
 }
-.inputview{
-  padding:20px;
+.inputview {
+  padding: 20px;
   font-size: 20px;
-  border:none;
-  height:100%;
-  width:100%;
-  border-radius:30px;
+  border: none;
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
   background-color: white;
-  resize:none;
+  resize: none;
   /* flex-grow: 1; */
   overflow: auto;
   box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
 }
-.testcaseresult{
-  height:40px;
-  width:200px;
+.testcaseresult {
+  height: 40px;
+  width: 200px;
   background-color: rgb(210, 40, 6);
-  color:white;
+  color: white;
   border-radius: 15px;
   /* padding:10px; */
-  text-align:center;
+  text-align: center;
   /* vertical-align:bottom; */
   /* padding-top:1px; */
 }
@@ -134,13 +133,24 @@
   display: inline;
 }
 pre {
-  font-size:20px;
+  font-size: 20px;
   white-space: pre-wrap; /* Ensure that newlines and white spaces are preserved */
   word-wrap: break-word; /* Break long words to prevent overflow */
 }
-@media only screen and (max-width:1200px) {
-  .submitbutton{
-    position:absolute;
-    margin-left:10%;
+@media only screen and (max-width: 1200px) {
+  .submitbutton {
+    margin-top:30px;
+    height:50px;
+    width:100px;
+    position: absolute;
+    margin-left: 10%;
+  }
+  .viewset button  {
+    height:50px;
+    width:100px;
+  }
+  .compileralone{
+    margin-right:20px;
+    width:90%;
   }
 }
