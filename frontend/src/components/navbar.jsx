@@ -24,6 +24,9 @@ const Navbar =()=>{
     const navCreate=()=>{
         navigate("/create");
     }
+    const navLeaderboard=()=>{
+        navigate("/leaderboard");
+    }
     return (
         <>
         <nav class ="navdiv">
@@ -35,6 +38,7 @@ const Navbar =()=>{
                 <li><a href="" onClick={navProblem}>Problems</a> </li>
                 <li><a href="" onClick={navCreate}>Create</a> </li>
                 <li><a href="" onClick={navCompiler}>Compiler</a> </li>
+                <li><a href="" onClick={navLeaderboard}>Leaderboard</a></li>
             </ul>
         </div>
           <div className="logoutdiv">

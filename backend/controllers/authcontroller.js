@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import Leaderboard from "../models/leaderboard.js";
 import createsecrettoken from "../util/secrettoken.js";
 import bcrypt from "bcryptjs";
 import problem from "../models/problem.js";
@@ -7,7 +8,7 @@ import { executeCode } from "./executecode.js";
 import fs from "fs";
 import compareOutput from "./compare.js";
 import axios from "axios";
-
+import updateScore from "./updatescore.js";
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -30,7 +31,7 @@ export const login = async (req, res, next) => {
     });
     res
       .status(201)
-      .json({ message: "User logged in successfully", success: true });
+      .json({ message: "User logged in successfully", success: true ,userid: user._id});
     next();
   } catch (error) {
     console.error(error);
@@ -182,7 +183,7 @@ export const runcode = async (req, res) => {
   );
 };
 export const judge = async (req, res) => {
-  const { language = "cpp", code, id } = req.body;
+  const { language = "cpp", code, id ,userid} = req.body;
   const Problem = await problem.findById(id);
   const testcase = Problem.testCases;
   try {
@@ -207,6 +208,7 @@ export const judge = async (req, res) => {
       }
     }
     console.log("passed");
+    updateScore(userid);
     return res.json({success:true,message:"testcases passed",testcase:testcase.length});
   } catch (error) {
     console.log(error.message);
@@ -248,5 +250,20 @@ export const update=async(req,res)=>{
   } catch (error) {
     console.log(error);
     res.json({ message: error.message, success: false });
+  }
+}
+export const getleaderboard=async(req,res)=>{
+  try {
+    const leaderboard = await Leaderboard.find().sort({ score: -1 }).limit(10);
+    const formattedLeaderboard = leaderboard.map((user) => ({
+      username: user.username,
+      score: user.score,
+      problemsSolved: user.problemsSolved,
+    }));
+    // console.log(formattedLeaderboard);
+    res.json(formattedLeaderboard);
+  } catch (err) {
+    console.error("Error fetching leaderboard", err);
+    res.status(500).json({ error: "Error fetching leaderboard" });
   }
 }

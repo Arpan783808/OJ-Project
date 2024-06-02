@@ -41,11 +41,17 @@ const Home = () => {
       <div className="home_page1">
         <Desktop />
         <Navbar />
-        <div className="home_page">
-          <h4>
+        <div className="home_page10">
+          <h4 className="welcometag">
             {" "}
-            Welcome <span>{username}</span>
+            WELCOME <span className="welcometag">{username}</span>
           </h4>
+          <div className="exploresite">
+            <p>
+              Greetings,  You're now part of an awesome community of
+              coders. Let's achieve great things together!
+            </p>
+          </div>
         </div>
         <Footer />
         <ToastContainer />

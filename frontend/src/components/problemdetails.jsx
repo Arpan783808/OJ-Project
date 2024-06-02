@@ -5,8 +5,10 @@ import { useParams } from "react-router-dom";
 import "./compcss/problemdetails.css";
 import Judgenav from "./judgenav.jsx";
 import Handletestcase from "./handletestcase.jsx";
+
 const Problemdetails = () => {
   const { id } = useParams();
+  
   const [problem, setProblem] = useState(null);
   const [code, setCode] = useState("");
   const [input, setInput] = useState("");
@@ -22,7 +24,7 @@ const Problemdetails = () => {
         const response = await axios.get(
           `http://localhost:5000/getproblembyid/${id}`
         );
-        
+
         setProblem(response.data);
         console.log(problem);
       } catch (error) {
@@ -36,11 +38,12 @@ const Problemdetails = () => {
     e.preventDefault();
 
     try {
+      
       setView("output");
-      console.log("enter");
       setOutput1("compiling...");
-      console.log(language);
+      
       const response = await axios.post("http://localhost:5000/run", {
+        
         code,
         language,
         input,
@@ -57,18 +60,20 @@ const Problemdetails = () => {
     e.preventDefault();
     setView("verdict");
     setVerdict("Compiling...");
+    const userid = localStorage.getItem("useremail");
+   
     const response = await axios.post("http://localhost:5000/judge", {
+      userid,
       code,
       language,
       id,
     });
     setPassed(response.data.testcase);
-    console.log(passed);
+    
     setMessage(response.data.message);
-    if(response.data.success){
+    if (response.data.success) {
       setVerdict("Accepted");
-    }
-    else{
+    } else {
       setVerdict("Failed");
     }
   };
@@ -148,7 +153,7 @@ const Problemdetails = () => {
                   <h2 style={{ color: "red" }}>Failed</h2>
                 )}
                 {verdict === "Compiling..." && (
-                  <h2 style={{ color:"grey" }}>Compiling...</h2>
+                  <h2 style={{ color: "grey" }}>Compiling...</h2>
                 )}
                 <Handletestcase passed={passed} />
                 {verdict === "Failed" && (

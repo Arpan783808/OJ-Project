@@ -6,7 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./compcss/signup.css";
 import rocket from "../assets/rocket.png";
 
-const Login = () => {
+const Login = ()  => {
+  
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     email: "",
@@ -43,6 +44,9 @@ const Login = () => {
       const { success, message } = data;
       if (success) {
         handleSuccess(message);
+        
+        localStorage.setItem("useremail",data.userid);
+        
         setTimeout(() => {
           navigate("/");
         }, 1000);

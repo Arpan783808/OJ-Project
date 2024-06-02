@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { signup,login,create,getAllProblems,getproblembyid,runcode,judge,deleteproblem,update } from "../controllers/authcontroller.js";
+import { signup,login,create,getAllProblems,getproblembyid,runcode,judge,deleteproblem,update, getleaderboard } from "../controllers/authcontroller.js";
 import  {jwtAuth}  from "../middleware/jwtAuth.js";
 
 const router = Router();
@@ -14,4 +14,5 @@ router.post("/run",runcode);
 router.post("/judge",judge);
 router.get("/deleteproblem/:id",deleteproblem);
 router.put("/update/:id",update);
+router.get("/leaderboard",getleaderboard);
 export default router;
