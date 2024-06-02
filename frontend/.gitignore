@@ -7,7 +7,7 @@
 codes
 # testing
 /coverage
-
+.env
 # production
 /build
 
