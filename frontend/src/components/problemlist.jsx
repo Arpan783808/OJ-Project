@@ -5,33 +5,17 @@ import "./compcss/problemlist.css";
 import Navbar from "./navbar.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, Navigate ,useNavigate} from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Footer from "./footer.jsx";
 import deletelogo from "../assets/deletelogo.png";
 import Update from "./update.jsx";
 const ProblemList = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [problems, setProblems] = useState([]);
   const [search, setSearch] = useState("");
+  const [difficulty, setDifficulty] = useState("");
 
-  
-    useEffect(() => {
-      const fetchProblems = async () => {
-        try {
-          const response = await axios.get(
-            "http://localhost:5000/getAllProblems",
-            {
-              params: { problemName: search },
-            }
-          );
-          setProblems(response.data);
-        } catch (error) {
-          console.error("Error fetching problems", error);
-        }
-      };
-
-      fetchProblems();
-    }, [search]);
+  useEffect(() => {
     const fetchProblems = async () => {
       try {
         const response = await axios.get(
@@ -45,19 +29,52 @@ const ProblemList = () => {
         console.error("Error fetching problems", error);
       }
     };
-  const handledelete=async(id)=>{
+    fetchProblems();
+  }, [search]);
+  const fetchProblems = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/getAllProblems", {
+        params: { problemName: search },
+      });
+      setProblems(response.data);
+    } catch (error) {
+      console.error("Error fetching problems", error);
+    }
+  };
+  const handledelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this problem?")) {
-      
-      const response=await axios.get(`http://localhost:5000/deleteproblem/${id}`);
-      if(response.data.success){
-        toast.success(response.data.message,{position:"bottom-right"});
+      const response = await axios.get(
+        `http://localhost:5000/deleteproblem/${id}`
+      );
+      if (response.data.success) {
+        toast.success(response.data.message, { position: "bottom-right" });
         fetchProblems();
-      }
-      else{
-        toast.error(response.data.message,{position:"bottom-left"});
+      } else {
+        toast.error(response.data.message, { position: "bottom-left" });
       }
     }
-  }
+  };
+  useEffect(()=>{
+    const fetchByDiff=async()=>{
+      try {
+        if(difficulty&&difficulty!=="All"){
+        const response = await axios.get(
+          `http://localhost:5000/getbydifficulty?difficulty=${difficulty}`);
+          setProblems(response.data);
+          console.log(response.data);
+        }
+        else{
+          fetchProblems();
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    }   
+    fetchByDiff(); 
+  },[difficulty]);
+  const handleDifficult = async (e) => {
+    setDifficulty(e.target.value);    
+  };
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
   };
@@ -75,6 +92,14 @@ const ProblemList = () => {
           value={search}
           onChange={handleSearchChange}
         />
+      </div>
+      <div className="selectdifficult">
+        <select value={difficulty} onChange={handleDifficult}>
+          <option value="">All</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
       </div>
       <div className="undernav">
         <div className="problem-list">
@@ -94,7 +119,10 @@ const ProblemList = () => {
                   </div>
                 ))}
               </div>
-              <button onClick={()=>handledelete(problem._id)} className="deletelogo">
+              <button
+                onClick={() => handledelete(problem._id)}
+                className="deletelogo"
+              >
                 <img src={deletelogo} alt="delete" />
               </button>
               <Link to={`/update/${problem._id}`} className="updatebutton">

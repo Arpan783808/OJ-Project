@@ -31,7 +31,11 @@ export const login = async (req, res, next) => {
     });
     res
       .status(201)
-      .json({ message: "User logged in successfully", success: true ,userid: user._id});
+      .json({
+        message: "User logged in successfully",
+        success: true,
+        userid: user._id,
+      });
     next();
   } catch (error) {
     console.error(error);
@@ -69,10 +73,10 @@ export const signup = async (req, res, next) => {
 
 export const create = async (req, res, next) => {
   console.log("request");
-  const { problemName, description, testCases, tags } = req.body;
+  const { problemName, description, testCases, tags, difficulty } = req.body;
   // console.log(problemname + description + testcases.input + testcases.output);
   const probfound = await problem.findOne({ problemName });
-  console.log(problemName + description + testCases + tags);
+  // console.log(problemName + description + testCases + tags + difficulty);
   if (probfound) {
     console.log("not created");
     return res.json({ message: "problem already exist", success: false });
@@ -83,6 +87,7 @@ export const create = async (req, res, next) => {
       description,
       testCases,
       tags,
+      difficulty,
     });
     await Problem.save();
     return res.status(201).json({
@@ -183,7 +188,7 @@ export const runcode = async (req, res) => {
   );
 };
 export const judge = async (req, res) => {
-  const { language = "cpp", code, id ,userid} = req.body;
+  const { language = "cpp", code, id, userid } = req.body;
   const Problem = await problem.findById(id);
   const testcase = Problem.testCases;
   try {
@@ -197,7 +202,10 @@ export const judge = async (req, res) => {
       // console.log(result.data);
       // console.log(result.data);
       console.log(testcase[i].expectedOutput);
-      const isCorrect=compareOutput(result.data.output,testcase[i].expectedOutput);
+      const isCorrect = compareOutput(
+        result.data.output,
+        testcase[i].expectedOutput
+      );
       if (!isCorrect) {
         console.log("testcase failed");
         return res.send({
@@ -209,7 +217,11 @@ export const judge = async (req, res) => {
     }
     console.log("passed");
     updateScore(userid);
-    return res.json({success:true,message:"testcases passed",testcase:testcase.length});
+    return res.json({
+      success: true,
+      message: "testcases passed",
+      testcase: testcase.length,
+    });
   } catch (error) {
     console.log(error.message);
     return res.json({ success: false, message: error.message });
@@ -221,16 +233,16 @@ export const deleteproblem = async (req, res) => {
   try {
     const Problem = await problem.findByIdAndDelete(id);
     if (!Problem) {
-      return res.json({ message: "problem not found",success:false });
+      return res.json({ message: "problem not found", success: false });
     }
-    res.json({message:"problem deleted successfully",success:true});
+    res.json({ message: "problem deleted successfully", success: true });
   } catch (error) {
     console.log(error);
-    res.json({ message: error.message,success:false });
+    res.json({ message: error.message, success: false });
   }
 };
-export const update=async(req,res)=>{
-  const {id}=req.params;
+export const update = async (req, res) => {
+  const { id } = req.params;
   const { statement, inputFormat, outputFormat } = req.body;
   const updatedFields = {
     "description.statement": statement,
@@ -242,8 +254,7 @@ export const update=async(req,res)=>{
       $set: updatedFields,
     });
     if (!Problem) {
-      return res.json({ message: "problem not found",success:false });
-      
+      return res.json({ message: "problem not found", success: false });
     }
     res.json({ message: "problem updated successfully", success: true });
     console.log(Problem.problemName);
@@ -251,8 +262,8 @@ export const update=async(req,res)=>{
     console.log(error);
     res.json({ message: error.message, success: false });
   }
-}
-export const getleaderboard=async(req,res)=>{
+};
+export const getleaderboard = async (req, res) => {
   try {
     const leaderboard = await Leaderboard.find().sort({ score: -1 }).limit(10);
     const formattedLeaderboard = leaderboard.map((user) => ({
@@ -266,4 +277,16 @@ export const getleaderboard=async(req,res)=>{
     console.error("Error fetching leaderboard", err);
     res.status(500).json({ error: "Error fetching leaderboard" });
   }
-}
+};
+export const getbydifficulty = async (req, res) => {
+  const { difficulty } = req.query;
+  if (!difficulty) {
+    return res.status(400).json({ message: "Difficulty is required" });
+  }
+  try {
+    const problems = await problem.find({ difficulty });
+    res.json(problems);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
