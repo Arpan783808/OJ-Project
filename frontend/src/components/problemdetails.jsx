@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./compcss/problemdetails.css";
 import Judgenav from "./judgenav.jsx";
-import Handletestcase from "./handletestcase.jsx";
+
 
 const Problemdetails = () => {
   const { id } = useParams();
@@ -41,7 +41,7 @@ const Problemdetails = () => {
       setView("output");
       setOutput1("compiling...");
 
-      const response = await axios.post("http://localhost:5000/run", {
+      const response = await axios.post("http://localhost:5001/run", {
         code,
         language,
         input,
@@ -60,7 +60,7 @@ const Problemdetails = () => {
     setVerdict("Compiling...");
     const userid = localStorage.getItem("useremail");
 
-    const response = await axios.post("http://localhost:5000/judge", {
+    const response = await axios.post("http://localhost:5001/judge", {
       userid,
       code,
       language,
@@ -154,19 +154,7 @@ const Problemdetails = () => {
                 {verdict === "Compiling..." && (
                   <h2 style={{ color: "grey" }}>Compiling...</h2>
                 )}
-                {passed.map((index) => {
-                  <div
-                    style={{
-                      backgroundColor: "green",
-                      color: "white",
-                      height: "30px",
-                      width: "200px",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    <h3 style={{color:"black"}}>`testcase ${index + 1} passed`</h3>
-                  </div>;
-                })}
+                
                 {verdict === "Failed" && (
                   <div className="testcaseresult">
                     <h3>{message}</h3>

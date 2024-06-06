@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "axios": "^1.7.2",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "mongoose": "^8.4.1",
+    "nodemon": "^3.1.3",
+    "path": "^0.12.7",
+    "url": "^0.11.3",
+    "uuid": "^9.0.1"
+  },
+  "name": "compiler",
+  "version": "1.0.0",
+  "main": "compiler.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon compiler.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

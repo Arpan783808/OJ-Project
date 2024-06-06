@@ -14,7 +14,7 @@ const Compiler =()=>{
 
             console.log("enter");
             setOutput("compiling...");
-            const response = await axios.post("http://localhost:5000/run", {
+            const response = await axios.post("http://localhost:5001/run", {
               code,
               language,
               input,

@@ -1,0 +1,17 @@
+# Ignore node_modules and other dependencies
+node_modules
+
+# Ignore npm logs
+npm-debug.log
+
+# Ignore environment variables file
+.env
+
+# Ignore user-submitted code and temporary files
+codes/
+
+# Optional: Ignore other build artifacts and temporary files
+build/
+dist/
+.DS_Store
+*.log
