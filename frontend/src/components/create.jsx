@@ -18,6 +18,7 @@ const CreateProblem = () => {
     },
     tags: [""],
     testCases: [{input:"",expectedOutput:""}],
+    difficulty:"",
   });
 
   const handleChange = (e) => {
@@ -42,6 +43,7 @@ const CreateProblem = () => {
       const testCases = [...formData.testCases];
       testCases[index][key] = value;
       setFormData({ ...formData, testCases });
+      
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -90,6 +92,7 @@ const CreateProblem = () => {
         },
         tags: [""],
         testCases: [{ input: "", expectedOutput: "" }],
+        difficulty:"Easy",
       });
     } catch (error) {
       console.error("Error saving problem:", error);
@@ -189,7 +192,6 @@ const CreateProblem = () => {
                   name={`testCases.${index}.input`}
                   value={testCase.input}
                   onChange={handleChange}
-                  
                 />
                 <br />
                 <label
@@ -210,7 +212,6 @@ const CreateProblem = () => {
                   name={`testCases.${index}.expectedOutput`}
                   value={testCase.expectedOutput}
                   onChange={handleChange}
-                
                 />
                 <button
                   className="removebutton"
@@ -229,6 +230,13 @@ const CreateProblem = () => {
           >
             Add Test Case
           </button>
+          <div className="selectdifficult1">
+            <select name="difficulty" value={formData.difficulty} onChange={handleChange}>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </div>
           <div className="buttondiv">
             <button type="submit" className="button-container">
               Create Problem

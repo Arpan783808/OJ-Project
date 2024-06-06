@@ -1,9 +1,11 @@
 import "./compcss/desktop.css";
 import topviewimage from "../assets/topviewimage.png";
-const Desktop = ({ className = "" }) => {
+import profile from "../assets/profile.png";
+const Desktop = ({ className = "" ,username }) => {
   return (
     <div className={`desktop-6 ${className}`}>
-      <div className="desktop-6-child" />
+      <img className="profile" src={profile} />
+      <h1>{username}</h1>
       <div className="image-23-parent">
         <img
           className="image-23-icon"

@@ -121,16 +121,14 @@
 .testcaseresult {
   height: 40px;
   width: 200px;
-  background-color: rgb(210, 40, 6);
+  background-color: red;
   color: white;
   border-radius: 15px;
-  /* padding:10px; */
   text-align: center;
-  /* vertical-align:bottom; */
-  /* padding-top:1px; */
+  vertical-align: middle;
 }
-.testcaseresult {
-  display: inline;
+.testcaseresult h3{
+margin:auto;
 }
 pre {
   font-size: 20px;

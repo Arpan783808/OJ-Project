@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 .welcometag{
-    color:#19376D;
+    color:hwb(219 10% 57%);
     font-family: "Anton",sans-serif;
     margin:30px;
     font-size:100px;
@@ -11,31 +11,48 @@
     text-transform: uppercase;
 }
 .home_page1{
-    height: 100%;
+    min-height: 150%;
+    background-color: hwb(219 10% 57%);
 }
 .home_page10{
+    padding:30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    min-height:30%;
     justify-content: center;
+    height:60%;
 }
 .exploresite{
-    background-color: rgb(24, 24, 112);
-    height:400px;
-    width:40%;
+    
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-    /* border:10px solid rgb(16, 79, 179); */
-    padding:20px;
-    /* box-shadow:4px 24px 20px 20px rgb(7, 37, 94); */
-    z-index:-1
+    /* align-items: center; */
 }
-.exploresite p{
-    font-size:50px;
+
+.exploresite img{
+    height:450px;
+    width:850px;
+    border-radius: 30px;
+    position: relative;
+    left:5%;
+    box-shadow: 4px 4px 20px rgb(64, 169, 255);
+}
+.exploredes{
+    
+    position: relative;
+    left:20%;
+    top:50px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.exploredes h1{
+    color:rgb(149, 215, 251);
+    margin:0;
+    font-size:5rem;
+    text-shadow:2px 2px 20px rgb(4, 123, 228);
+}
+.exploredes h2{
     color:white;
-    text-align: center;
+    margin:0;
+    font-size: 30px;
     
 }

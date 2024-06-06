@@ -210,8 +210,8 @@ export const judge = async (req, res) => {
         console.log("testcase failed");
         return res.send({
           success: false,
-          message: `testcase {i} failed`,
-          testcase: i,
+          message: `Testcase ${i+1} failed`,
+          testcase: i+1,
         });
       }
     }

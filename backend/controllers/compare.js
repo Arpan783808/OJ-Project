@@ -10,8 +10,6 @@ const normalizeOutput = (output) => {
 const compareOutputs = (generatedOutput, expectedOutput) => {
   const normalizedGeneratedOutput = normalizeOutput(generatedOutput);
   const normalizedExpectedOutput = normalizeOutput(expectedOutput);
-  console.log(normalizedGeneratedOutput);
-  console.log(normalizedExpectedOutput);
   return normalizedGeneratedOutput === normalizedExpectedOutput;
 };
 

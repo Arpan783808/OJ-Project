@@ -112,6 +112,17 @@ const ProblemList = () => {
               >
                 <h3>{problem.problemName}</h3>
               </Link>
+              <div className="difficultydiv">
+                {problem.difficulty === "Easy" && (
+                  <h2 style={{ color: "blue" }}>{problem.difficulty}</h2>
+                )}
+                {problem.difficulty === "Medium" && (
+                  <h2 style={{ color: "green" }}>{problem.difficulty}</h2>
+                )}
+                {problem.difficulty === "Hard" && (
+                  <h2 style={{ color: "red" }}>{problem.difficulty}</h2>
+                )}
+              </div>
               <div className="alltagsshow">
                 {problem.tags.map((tag) => (
                   <div className="singletagshow">

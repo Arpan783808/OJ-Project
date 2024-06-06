@@ -156,6 +156,7 @@
   text-align: center;
 }
 .buttondiv {
+  margin:0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -203,4 +204,17 @@
   font-size:20px;
   border:none;
   border-radius:10px;
+}
+.selectdifficult1{
+  margin-top:30px;
+  position: relative;
+  left:47%;
+  
+}
+.selectdifficult1 select{
+  height:40px;
+  width:120px;
+  border-radius: 15px;
+  font-size: 20px;
+  cursor: pointer;
 }

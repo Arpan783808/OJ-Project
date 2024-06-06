@@ -8,7 +8,7 @@ import Handletestcase from "./handletestcase.jsx";
 
 const Problemdetails = () => {
   const { id } = useParams();
-  
+
   const [problem, setProblem] = useState(null);
   const [code, setCode] = useState("");
   const [input, setInput] = useState("");
@@ -26,7 +26,7 @@ const Problemdetails = () => {
         );
 
         setProblem(response.data);
-        console.log(problem);
+        // console.log(problem);
       } catch (error) {
         console.log("error fetching problem", error);
       }
@@ -38,17 +38,15 @@ const Problemdetails = () => {
     e.preventDefault();
 
     try {
-      
       setView("output");
       setOutput1("compiling...");
-      
+
       const response = await axios.post("http://localhost:5000/run", {
-        
         code,
         language,
         input,
       });
-      console.log(response.data);
+      // console.log(response.data);
       setOutput1(response.data.output);
     } catch (error) {
       console.error("code compilation failed", error);
@@ -61,7 +59,7 @@ const Problemdetails = () => {
     setView("verdict");
     setVerdict("Compiling...");
     const userid = localStorage.getItem("useremail");
-   
+
     const response = await axios.post("http://localhost:5000/judge", {
       userid,
       code,
@@ -69,8 +67,9 @@ const Problemdetails = () => {
       id,
     });
     setPassed(response.data.testcase);
-    
+    console.log(passed);
     setMessage(response.data.message);
+    console.log(message);
     if (response.data.success) {
       setVerdict("Accepted");
     } else {
@@ -155,7 +154,19 @@ const Problemdetails = () => {
                 {verdict === "Compiling..." && (
                   <h2 style={{ color: "grey" }}>Compiling...</h2>
                 )}
-                <Handletestcase passed={passed} />
+                {passed.map((index) => {
+                  <div
+                    style={{
+                      backgroundColor: "green",
+                      color: "white",
+                      height: "30px",
+                      width: "200px",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <h3 style={{color:"black"}}>`testcase ${index + 1} passed`</h3>
+                  </div>;
+                })}
                 {verdict === "Failed" && (
                   <div className="testcaseresult">
                     <h3>{message}</h3>

@@ -15,6 +15,21 @@
   --padding-146xl: 165px;
   --padding-63xl: 82px;
 }
+.profile {
+  height:40px;
+  width:40px;
+  position: absolute;
+  left:90%;
+  top:30px;
+}
+.desktop-6 h1{
+  position:absolute;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size:30px;
+  z-index:100;
+  left:92%;
+  top:15px;
+}
 .desktop-6-child {
   height: 418px;
   width: 1440px;
