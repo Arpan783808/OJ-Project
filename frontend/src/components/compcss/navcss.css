@@ -62,11 +62,10 @@ a {
 
 .logoutdiv{
   display:flex;
-  /* position:relative; */
-  /* left:80%px; */
-  justify-content:right;
+  position:relative;  
   align-items: center;
-  margin-left:30%;
+  left:25%;
+  right:10%;
 }
 .cta{
   font-family: "Montserrat", sans-serif;

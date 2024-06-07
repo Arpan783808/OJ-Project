@@ -43,7 +43,7 @@ const Navbar =()=>{
         </div>
           <div className="logoutdiv">
             <img src={logoutlogo} className="logout" />
-            <a href="#" class="cta" onClick={Logout}>Logout </a>
+            <a href="#" className="cta" onClick={Logout}>Logout </a>
         </div>
         </nav>
         

@@ -1,6 +1,6 @@
 import problem from "../models/problem.js";
 import axios from "axios";
-import updateScore from "../../backend/controllers/updatescore.js";
+import updateScore from "./updatescore.js";
 import { generateFilePaths, ensureCodesDirectory } from "../generateFile.js";
 import fs from "fs";
 import {executeCode} from "./executecode.js";

@@ -5,7 +5,7 @@ node_modules
 npm-debug.log
 
 # Ignore environment variables file
-.env
+
 
 # Ignore user-submitted code and temporary files
 codes/

@@ -1,49 +1,46 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import "./compcss/createproblem.css";
 import Navbar from "./navbar.jsx";
 import { useNavigate } from "react-router-dom";
 import Footer from "./footer.jsx";
 
-
-const CreateProblem = () => {  
+const CreateProblem = () => {
   const [formData, setFormData] = useState({
     problemName: "",
-    description:{
+    description: {
       statement: "",
       inputFormat: "",
       outputFormat: "",
     },
     tags: [""],
-    testCases: [{input:"",expectedOutput:""}],
-    difficulty:"",
+    testCases: [{ input: "", expectedOutput: "" }],
+    difficulty: "Easy",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name.startsWith('description.')) {
-      const [_, key] = name.split('.');
+    if (name.startsWith("description.")) {
+      const [_, key] = name.split(".");
       setFormData({
         ...formData,
         description: {
           ...formData.description,
-          [key]: value
-        }
+          [key]: value,
+        },
       });
-    } 
-    else if (name.startsWith('tags.')) {
-      const index = parseInt(name.split('.')[1], 10);
+    } else if (name.startsWith("tags.")) {
+      const index = parseInt(name.split(".")[1], 10);
       const tags = [...formData.tags];
       tags[index] = value;
       setFormData({ ...formData, tags });
-    } else if (name.startsWith('testCases.')) {
-      const [_, index, key] = name.split('.');
+    } else if (name.startsWith("testCases.")) {
+      const [_, index, key] = name.split(".");
       const testCases = [...formData.testCases];
       testCases[index][key] = value;
       setFormData({ ...formData, testCases });
-      
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -59,17 +56,16 @@ const CreateProblem = () => {
     const tags = formData.tags.filter((_, i) => i !== index);
     setFormData({ ...formData, tags });
   };
-  const removeTest=(index)=>{
-    const testCases=formData.testCases.filter((_,i) => (i!==index));
-    setFormData({...formData,testCases});
-  }
+  const removeTest = (index) => {
+    const testCases = formData.testCases.filter((_, i) => i !== index);
+    setFormData({ ...formData, testCases });
+  };
   const addTestCase = () => {
     setFormData({
       ...formData,
       testCases: [...formData.testCases, { input: "", expectedOutput: "" }],
     });
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,10 +75,10 @@ const CreateProblem = () => {
         tags: formData.tags.filter((tag) => tag.trim()), // Filter out any empty tags
       };
       console.log(data.testCases);
-      const response=await axios.post("http://localhost:5000/create", data);
-      const {success,message}=response.data;
-      if(success) toast.success(message,{position:'bottom-right'});
-      else  toast.error(message, { position: "bottom-left" });  
+      const response = await axios.post("http://localhost:5000/create", data);
+      const { success, message } = response.data;
+      if (success) toast.success(message, { position: "bottom-right" });
+      else toast.error(message, { position: "bottom-left" });
       setFormData({
         problemName: "",
         description: {
@@ -92,7 +88,7 @@ const CreateProblem = () => {
         },
         tags: [""],
         testCases: [{ input: "", expectedOutput: "" }],
-        difficulty:"Easy",
+        difficulty: "Easy",
       });
     } catch (error) {
       console.error("Error saving problem:", error);
@@ -231,7 +227,11 @@ const CreateProblem = () => {
             Add Test Case
           </button>
           <div className="selectdifficult1">
-            <select name="difficulty" value={formData.difficulty} onChange={handleChange}>
+            <select
+              name="difficulty"
+              value={formData.difficulty}
+              onChange={handleChange}
+            >
               <option value="Easy">Easy</option>
               <option value="Medium">Medium</option>
               <option value="Hard">Hard</option>
@@ -252,47 +252,3 @@ const CreateProblem = () => {
 };
 
 export default CreateProblem;
-
-
-
-
-
-
-// const [problemName, setProblemName] = useState('');
-  // const [description, setDescription] = useState('');
-  // const [outputFormat, setOutputformat] = useState('');
-  // const [inputFormat, setInputformat] = useState('');
-  // const [testCases, setTestCases] = useState([{ input: '', output: '' }]);
-  // const navigate = useNavigate();
-  
-  // const handleTestCaseChange = (index, field, value) => {
-  //   const newTestCases = [...testCases];
-  //   newTestCases[index][field] = value;
-  //   setTestCases(newTestCases);
-  // };
-  // description={statement,inputFormat,outputFormat};
-  // tags
-  // const inputvalue={problemName,description,testCases,tags};
-  
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post('http://localhost:5000/create', {
-  //       ...inputvalue,
-  //     });
-  //     const { success, message} = response.data;
-  //     console.log(response);
-  //     if (success) {
-  //       toast.success(message, {
-  //       position: "bottom-right",     
-  //       });
-  //       navigate("/create");
-  //     } else {
-  //       toast.error(message, {
-  //       position: "bottom-left",
-  //       });
-  //     }  
-  //   } catch (error) {
-  //     alert('Failed to create problem');
-  //   }
-  // };
