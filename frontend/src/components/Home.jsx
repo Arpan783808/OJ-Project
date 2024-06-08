@@ -9,6 +9,8 @@ import Navbar from "./navbar.jsx";
 import "./compcss/home.css";
 import snippet from "../assets/snippet.png";
 import Footer from  "./footer.jsx";
+const host = process.env.REACT_APP_BACKEND_URL;
+
 const Home = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
@@ -19,7 +21,7 @@ const Home = () => {
       //   navigate("/login");
       // }
       const { data } = await axios.post(
-        "http://localhost:5000",
+        `${host}`,
         {},
         { withCredentials: true }
       );

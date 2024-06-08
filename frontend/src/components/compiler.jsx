@@ -3,6 +3,7 @@ import "./compcss/compiler.css";
 import Compilernav from "./compilernav.jsx";
 import axios from "axios";
 const Compiler =()=>{
+    const host = process.env.REACT_APP_COMPILER_URL;
     const [input,setInput]=useState('');
     const [code,setCode]=useState('');
     const [output,setOutput]=useState('');
@@ -11,10 +12,9 @@ const Compiler =()=>{
         e.preventDefault();
        
         try{
-
             console.log("enter");
             setOutput("compiling...");
-            const response = await axios.post("http://localhost:5001/run", {
+            const response = await axios.post(`${host}/run`, {
               code,
               language,
               input,

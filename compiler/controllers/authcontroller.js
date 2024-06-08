@@ -3,7 +3,7 @@ import axios from "axios";
 import updateScore from "./updatescore.js";
 import { generateFilePaths, ensureCodesDirectory } from "../generateFile.js";
 import fs from "fs";
-import {executeCode} from "./executecode.js";
+import { executeCode } from "./executecode.js";
 import compareOutput from "./compare.js";
 
 export const runcode = async (req, res) => {
@@ -64,10 +64,12 @@ export const judge = async (req, res) => {
   const { language = "cpp", code, id, userid } = req.body;
   const Problem = await problem.findById(id);
   const testcase = Problem.testCases;
+  console.log(process.env.COMPILER_URL);
   try {
+    let test = [];
     for (var i = 0; i < testcase.length; i++) {
       const input = testcase[i].input;
-      const result = await axios.post("http://localhost:5001/run", {
+      const result = await axios.post(`${process.env.COMPILER_URL}/run`, {
         code,
         language,
         input,
@@ -80,12 +82,15 @@ export const judge = async (req, res) => {
         testcase[i].expectedOutput
       );
       if (!isCorrect) {
+        test.push({ testcase: i + 1, success: false });
         console.log("testcase failed");
         return res.send({
           success: false,
           message: `Testcase ${i + 1} failed`,
-          testcase: i + 1,
+          test: test,
         });
+      } else {
+        test.push({ testcase: i + 1, success: true });
       }
     }
     console.log("passed");
@@ -93,7 +98,7 @@ export const judge = async (req, res) => {
     return res.json({
       success: true,
       message: "testcases passed",
-      testcase: testcase.length,
+      test: test,
     });
   } catch (error) {
     console.log(error.message);

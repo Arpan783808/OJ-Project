@@ -118,17 +118,28 @@
   overflow: auto;
   box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
 }
-.testcaseresult {
-  height: 40px;
-  width: 200px;
-  background-color: red;
-  color: white;
-  border-radius: 15px;
-  text-align: center;
-  vertical-align: middle;
+
+.testcaseresult{
+  display:flex;
+  gap:10px;
+  flex-wrap: wrap;
+  z-index:100;
 }
-.testcaseresult h3{
-margin:auto;
+.passestc{
+  background-color: green;
+  height:20px;
+  width:100px;
+  color:white;
+  border-radius: 10px;
+  text-align: center;
+}
+.failedtc{
+  background-color: red;
+  height:20px;
+  width:100px;
+  color:white;
+  border-radius: 10px;
+  text-align: center;
 }
 pre {
   font-size: 20px;

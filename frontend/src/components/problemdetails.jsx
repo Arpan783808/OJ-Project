@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom";
 import "./compcss/problemdetails.css";
 import Judgenav from "./judgenav.jsx";
 
-
 const Problemdetails = () => {
   const { id } = useParams();
-
+  const host = process.env.REACT_APP_COMPILER_URL;
+  const host1 = process.env.REACT_APP_BACKEND_URL;
   const [problem, setProblem] = useState(null);
   const [code, setCode] = useState("");
   const [input, setInput] = useState("");
@@ -16,13 +16,13 @@ const Problemdetails = () => {
   const [output1, setOutput1] = useState("");
   const [language, setLanguage] = useState("cpp");
   const [verdict, setVerdict] = useState("");
-  const [passed, setPassed] = useState();
-  const [message, setMessage] = useState("");
+  const [result, setResult] = useState();
+  const [test, setTest] = useState([]);
   useEffect(() => {
     const fetchProblem = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/getproblembyid/${id}`
+          `${host1}/getproblembyid/${id}`
         );
 
         setProblem(response.data);
@@ -41,7 +41,7 @@ const Problemdetails = () => {
       setView("output");
       setOutput1("compiling...");
 
-      const response = await axios.post("http://localhost:5001/run", {
+      const response = await axios.post(`${host}/run`, {
         code,
         language,
         input,
@@ -60,16 +60,15 @@ const Problemdetails = () => {
     setVerdict("Compiling...");
     const userid = localStorage.getItem("useremail");
 
-    const response = await axios.post("http://localhost:5001/judge", {
+    const response = await axios.post(`${host}/judge`, {
       userid,
       code,
       language,
       id,
     });
-    setPassed(response.data.testcase);
-    console.log(passed);
-    setMessage(response.data.message);
-    console.log(message);
+    setResult(response.data);
+    setTest(response.data.test);
+    // console.log(result.test[0]);
     if (response.data.success) {
       setVerdict("Accepted");
     } else {
@@ -153,12 +152,6 @@ const Problemdetails = () => {
                 )}
                 {verdict === "Compiling..." && (
                   <h2 style={{ color: "grey" }}>Compiling...</h2>
-                )}
-                
-                {verdict === "Failed" && (
-                  <div className="testcaseresult">
-                    <h3>{message}</h3>
-                  </div>
                 )}
               </div>
             )}

@@ -8,6 +8,7 @@ import rocket from "../assets/rocket.png"
 
 
 const Signup = () => {
+  const host = process.env.REACT_APP_BACKEND_URL;
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     email: "",
@@ -36,7 +37,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/signup",
+        `${host}/signup`,
         {
           ...inputValue,
         },

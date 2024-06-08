@@ -4,19 +4,20 @@ import Navbar from "./navbar.jsx";
 import "./compcss/leaderboard.css";
 import leaderphoto from "../assets/leaderphoto.png"
 const Leaderboard = () => {
+  const host = process.env.REACT_APP_BACKEND_URL;
   const [leaderboard, setLeaderboard] = useState([]);
   useEffect(() => {
     fetchLeaderboard();
   }, []);
   const fetchLeaderboard = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/leaderboard");
-
+      const response = await axios.get(`${host}/leaderboard`);
       setLeaderboard(response.data);
     } catch (error) {
       console.error("Error fetching leaderboard:", error);
     }
   };
+
   return (
     <div className="leaderboardfull">
       <Navbar />

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "./footer.jsx";
 
 const CreateProblem = () => {
+  const host = process.env.REACT_APP_BACKEND_URL;
   const [formData, setFormData] = useState({
     problemName: "",
     description: {
@@ -75,7 +76,7 @@ const CreateProblem = () => {
         tags: formData.tags.filter((tag) => tag.trim()), // Filter out any empty tags
       };
       console.log(data.testCases);
-      const response = await axios.post("http://localhost:5000/create", data);
+      const response = await axios.post(`${host}/create`, data);
       const { success, message } = response.data;
       if (success) toast.success(message, { position: "bottom-right" });
       else toast.error(message, { position: "bottom-left" });

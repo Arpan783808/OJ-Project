@@ -14,12 +14,12 @@ const ProblemList = () => {
   const [problems, setProblems] = useState([]);
   const [search, setSearch] = useState("");
   const [difficulty, setDifficulty] = useState("");
-
+  const host = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const fetchProblems = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/getAllProblems",
+          `${host}/getAllProblems`,
           {
             params: { problemName: search },
           }
@@ -33,7 +33,7 @@ const ProblemList = () => {
   }, [search]);
   const fetchProblems = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/getAllProblems", {
+      const response = await axios.get(`${host}/getAllProblems`, {
         params: { problemName: search },
       });
       setProblems(response.data);
@@ -44,7 +44,7 @@ const ProblemList = () => {
   const handledelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this problem?")) {
       const response = await axios.get(
-        `http://localhost:5000/deleteproblem/${id}`
+        `${host}/deleteproblem/${id}`
       );
       if (response.data.success) {
         toast.success(response.data.message, { position: "bottom-right" });
@@ -59,7 +59,7 @@ const ProblemList = () => {
       try {
         if(difficulty&&difficulty!=="All"){
         const response = await axios.get(
-          `http://localhost:5000/getbydifficulty?difficulty=${difficulty}`);
+          `${host}/getbydifficulty?difficulty=${difficulty}`);
           setProblems(response.data);
           console.log(response.data);
         }
