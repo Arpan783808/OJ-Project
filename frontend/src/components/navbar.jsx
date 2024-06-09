@@ -7,13 +7,13 @@ import logogoj from "../assets/logooj.png";
 
 const Navbar =()=>{
     const navigate=useNavigate();
-    const [cookies, removeCookie] = useCookies([]);
+    // const [cookies, removeCookie] = useCookies([]);
     const Logout = () => {
-        removeCookie("token");
-        navigate("/login");
+        localStorage.removeItem("token");
+        navigate("/");
     };
     const navHome=()=>{
-        navigate("/");
+        navigate("/home");
     }
     const navCompiler=()=>{
         navigate("/compiler");

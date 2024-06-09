@@ -31,14 +31,14 @@
   flex-grow: 1;
   background-color: #9fe8fa;
   margin-left: 30px;
-  margin-right: 20px;
+  margin-right: 50px;
 }
 .compileralone {
   padding: 30px;
   font-size: 20px;
   overflow-y: auto;
   overflow-x: auto;
-  height: 60%;
+  height: 53%;
   border-radius: 30px;
   resize: none;
 
@@ -50,13 +50,13 @@
 .submitbutton {
   position: absolute;
   background-color: #effffd;
-  height: 70px;
+  height: 50px;
 
-  width: 130px;
+  width: 100px;
   cursor: pointer;
   font-size: 25px;
-  border-radius: 20px;
-  margin-top: 17px;
+  border-radius: 10px;
+  margin-top: 28px;
   margin-left: 70%;
   border: none;
   box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
@@ -80,12 +80,12 @@
 }
 .viewset button {
   font-size: 24px;
-  height: 60px;
-  width: 120px;
+  height: 40px;
+  width: 90px;
   background-color: #448ef6;
   cursor: pointer;
   border: none;
-  border-radius: 10px;
+  border-radius: 7px;
   color: white;
 }
 .viewset button:hover {
@@ -146,8 +146,9 @@ pre {
 }
 @media only screen and (max-width: 1200px) {
   .submitbutton {
-    margin-top:30px;
+    margin-top:10px;
     height:50px;
+    border-radius: 10px;
     width:100px;
     position: absolute;
     margin-left: 10%;

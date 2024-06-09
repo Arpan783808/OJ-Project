@@ -6,7 +6,7 @@ label {
 
 .signupfull h1 {
   font-family: "League Spartan", sans-serif;
-  font-size: 220px;
+  font-size: 180px;
   position: absolute;
   right: 50%;
   color: #fefaf6;
@@ -32,8 +32,8 @@ label {
   background-color: white;
   padding: 2rem 3rem;
   border-radius: 2rem;
-  width: 40%;
-  height: 40%;
+  width: 30%;
+  height: 60%;
   /* border:1px solid black;  */
   box-shadow: 4px 4px 24px 4px rgb(60, 120, 241);
 }
@@ -41,17 +41,17 @@ label {
   background-color: white;
   padding: 2rem 3rem;
   border-radius: 2rem;
-  width: 500px;
-  height: 400px;
+  width: 400px;
+  height: 330px;
   /* border:1px solid black;  */
   box-shadow: 4px 4px 24px 4px rgb(60, 120, 241);
 }
 .email {
   color: black;
-  font-size: 25px;
+  font-size: 15px;
 }
 .form_container > h2 {
-  font-size: 35px;
+  font-size: 30px;
   margin-block: 1rem;
   padding-block: 0.6rem;
   color: #1d267d;
@@ -84,7 +84,7 @@ label {
 
 .form_container button {
   height: 50px;
-
+  /* width:120px; */
   background-color: #0e2954;
   color: #fff;
   border: none;
@@ -98,19 +98,15 @@ label {
   background-color: #1c82ad;
 }
 span {
-  font-size: 20px;
+  font-size: 15px;
 }
 span a {
-  font-size: 20px;
+  font-size: 15px;
   text-decoration: none;
   color: #ff204e;
 }
-.home_page1 {
-  width: 100%;
-  height: 100%;
-}
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 900px) {
   .home_page {
     font-size: 1.5rem;
   }
@@ -122,7 +118,7 @@ span a {
 .sub1:hover {
   background-color: #1c82ad;
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1290px) {
   .signupfull h1 {
     display: none;
   }
@@ -130,7 +126,7 @@ span a {
     display: none;
   }
 }
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1200px) {
   .signupfull h1 {
     font-size: 200px;
   }

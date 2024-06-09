@@ -12,7 +12,7 @@ const Judgenav = ({  language,setLanguage,handleSubmit}) => {
 
         className="homebutton"
         onClick={() => {
-          navigate("/");
+          navigate("/home");
         }}
       >
         Home

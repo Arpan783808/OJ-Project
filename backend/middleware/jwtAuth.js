@@ -4,11 +4,12 @@ import User from "../models/User.js";
 dotenv.config();
 
 const jwtAuth = (req, res)=> {
-  const token = req.cookies.token;
+  const {token} = req.body;
   if (!token) {
+    console.log("not");
     return res.json({ status: false });
   }
- 
+  console.log("auth");
   jwt.verify(token, process.env.JWT_SECRET, async (err, data) => {
     if (err) {
       return res.json({ status: false });

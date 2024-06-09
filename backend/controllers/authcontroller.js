@@ -18,12 +18,13 @@ export const login = async (req, res, next) => {
       return res.json({ message: "Incorrect password or email" });
     }
     const token = createsecrettoken(user._id);
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: true,
-      sameSite: "none",
-    });
+    // res.cookie("token", token, {
+    //   withCredentials: true,
+    //   httpOnly: true,
+    //   sameSite: "none",
+    // });
     res.status(201).json({
+      token: token,
       message: "User logged in successfully",
       success: true,
       userid: user._id,
@@ -47,11 +48,9 @@ export const signup = async (req, res, next) => {
     user.password = await bcrypt.hash(password, 12);
     await user.save();
     const token = createsecrettoken(user._id);
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
+   
     res.status(201).json({
+      token: token,
       message: "User signed in successfully",
       success: true,
       user,

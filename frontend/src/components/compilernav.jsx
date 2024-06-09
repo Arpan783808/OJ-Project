@@ -10,7 +10,7 @@ const Compilernav = ({ handleSubmit,language, setLanguage }) => {
       <button
         className="homebutton"
         onClick={() => {
-          navigate("/");
+          navigate("/home");
         }}
       >
         Home

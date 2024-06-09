@@ -39,15 +39,16 @@ const Login = () => {
         `${host}/login`,
         {
           ...inputValue,
-        },
-        { withCredentials: true }
+        }
       );
+      
       const { success, message } = data;
       if (success) {
+        localStorage.setItem("token", data.token);
         handleSuccess(message);
         localStorage.setItem("useremail", data.userid);
         setTimeout(() => {
-          navigate("/");
+          navigate("/home");
         });
       } else {
         handleError(message);

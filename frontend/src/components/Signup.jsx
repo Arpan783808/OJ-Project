@@ -40,14 +40,15 @@ const Signup = () => {
         `${host}/signup`,
         {
           ...inputValue,
-        },
-        { withCredentials: true }
+        }
       );
+      
       const { success, message } = data;
       if (success) {
+        localStorage.setItem("token", data.token);
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/");
+          navigate("/home");
         }, 1000);
       } else {
         handleError(message);
@@ -104,7 +105,7 @@ const Signup = () => {
         </div>
         <button className="sub" type="submit">Submit</button>
         <span>
-          Already have an account? <Link to={"/login"}>Login</Link>
+          Already have an account? <Link to={"/"}>Login</Link>
         </span>
       </form>
       <ToastContainer />

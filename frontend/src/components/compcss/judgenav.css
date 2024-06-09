@@ -69,6 +69,8 @@
         margin-left:40%;
         visibility: visible;
         cursor:pointer;
+        height:50px;
+        width:50px;
     }
     .runbutton,.homebutton,.selectlang{
         height:50px;

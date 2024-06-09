@@ -11,7 +11,6 @@ router.post("/", jwtAuth);
 router.post("/create",create);
 router.get("/getAllProblems",getAllProblems);
 router.get("/getproblembyid/:id",getproblembyid);
-
 router.get("/deleteproblem/:id",deleteproblem);
 router.put("/update/:id",update);
 router.get("/leaderboard",getleaderboard);
