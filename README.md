@@ -50,9 +50,10 @@ This is a full-stack online judge platform built with the MERN stack (MongoDB, E
 #### Authentication: JWT (JSON Web Token)
 <img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/529011b8-896c-48d6-9a4b-0259bfc50011" height="150" width="250"/>
 
-#### Deployment: Docker, AWS EC2, MongoDB Atlas
+#### Deployment: Docker, AWS EC2, ECR ,Vercel
 
 <img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/7ec551ef-f034-4cca-af2d-9df71af7b4c2" height="150" width="150" />
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/a5367fbc-d53c-4ffa-b446-1046c4b30927" height="150" width="150" />
 
 ### Prerequisites
 1. Node.js and npm installed on your machine
