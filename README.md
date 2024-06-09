@@ -1,23 +1,26 @@
 # CODESTER-ONLINE JUDGE
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/56a3f109-f68d-4c6f-9774-e227192c232e" height="500" width="500" />
+
 ## Table of Contents
-1. Overview
-2. Features
-3. Technologies Used
-4. Prerequisites
-5. Installation
-6. Backend
-7. Compiler
-8. Frontend
-9. Environment Variables
-10. Running the Project
-11. Local Development
-12. Docker Deployment
-13. API Documentation
-14. Usage
-15. Contributing
-16. License
+
+  1. Overview
+  2. Features
+  3. Technologies Used
+  4. Prerequisites                                              
+  5. Installation
+  6. Backend
+  7. Compiler
+  8. Frontend
+  9. Environment Variables
+  10. Running the Project
+  11. Local Development
+  12. Docker Deployment
+  13. Usage
+  14. Contributing
+  15. License
+
 
 
 
