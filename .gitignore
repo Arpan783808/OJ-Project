@@ -30,7 +30,7 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
-
+docker-compose.yml
 # dotenv environment variables file
 .env
 

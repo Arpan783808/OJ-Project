@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5001;
 connectDB();
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://codester-virid.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
