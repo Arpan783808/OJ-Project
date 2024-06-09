@@ -4,8 +4,7 @@
   display: flex;
   flex-direction: column;
   background-color: #9fe8fa;
-  /* justify-content: center; */
-  /* align-items: center; */
+  overflow-y:hidden;
 }
 .problemandcompiler {
   width: 100%;
@@ -13,11 +12,11 @@
   display: flex;
 }
 .problemdetails {
+  margin-bottom:20px;
   padding: 30px;
-  height: 90%;
+  height: 90vh;
   width: 40%;
   resize: horizontal;
-  overflow: auto;
   overflow-y: auto;
   overflow-x: auto;
   margin-top: 20px;
@@ -28,7 +27,6 @@
 }
 .compilerandoutput {
   margin-top: 20px;
-  height: 95%;
   width: 60%;
   flex-grow: 1;
   background-color: #9fe8fa;
@@ -58,7 +56,7 @@
   cursor: pointer;
   font-size: 25px;
   border-radius: 20px;
-  margin-top: 25px;
+  margin-top: 17px;
   margin-left: 70%;
   border: none;
   box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);

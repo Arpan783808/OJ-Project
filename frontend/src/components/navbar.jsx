@@ -9,8 +9,8 @@ const Navbar =()=>{
     const navigate=useNavigate();
     const [cookies, removeCookie] = useCookies([]);
     const Logout = () => {
-    removeCookie("token");
-    navigate("/login");
+        removeCookie("token");
+        navigate("/login");
     };
     const navHome=()=>{
         navigate("/");

@@ -45,12 +45,10 @@ const Login = () => {
       const { success, message } = data;
       if (success) {
         handleSuccess(message);
-
         localStorage.setItem("useremail", data.userid);
-
         setTimeout(() => {
           navigate("/");
-        }, 1000);
+        });
       } else {
         handleError(message);
       }

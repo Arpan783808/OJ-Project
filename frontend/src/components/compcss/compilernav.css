@@ -10,7 +10,7 @@
 }
 .homebutton{
     margin-top:12px;
-    height:60%;
+    height:70px;
     width:130px;
     border-radius: 20px;
     font-size: 25px;
@@ -25,7 +25,7 @@
 }
 .runbutton{
     background-color: #EFFFFD;
-    height:60%;
+    height:70px;
     width:130px;
     cursor:pointer;
     font-size:25px;
@@ -42,7 +42,7 @@
 .selectlang{
     box-shadow: 2px 2px 24px 4px rgb(117, 214, 244);
     margin-top:12px;
-    height:60%;
+    height:70px;
     width:130px;
     border-radius: 20px;
     font-size:24px;

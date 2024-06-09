@@ -18,18 +18,16 @@ export const login = async (req, res, next) => {
       return res.json({ message: "Incorrect password or email" });
     }
     const token = createsecrettoken(user._id);
-
     res.cookie("token", token, {
       withCredentials: true,
-      httpOnly: false,
+      httpOnly: true,
+      sameSite: "none",
     });
-    res
-      .status(201)
-      .json({
-        message: "User logged in successfully",
-        success: true,
-        userid: user._id,
-      });
+    res.status(201).json({
+      message: "User logged in successfully",
+      success: true,
+      userid: user._id,
+    });
     next();
   } catch (error) {
     console.error(error);

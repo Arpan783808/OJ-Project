@@ -17,9 +17,6 @@ const Home = () => {
   const [username, setUsername] = useState("");
   useEffect(() => {
     const verifyCookie = async () => {
-      // if (!cookies.token) {
-      //   navigate("/login");
-      // }
       const { data } = await axios.post(
         `${host}`,
         {},
@@ -27,11 +24,6 @@ const Home = () => {
       );
       const { status, user } = data;
       setUsername(user);
-      return status
-        ? toast(`Hello ${user}`, {
-            position: "top-right",
-          })
-        : (removeCookie("token"), navigate("/login"));
     };
     verifyCookie();
   }, [cookies, navigate, removeCookie]);
@@ -40,15 +32,10 @@ const Home = () => {
     navigate("/login");
   };
   return (
-    <>
       <div className="home_page1">
         <Desktop username={username}/>
         <Navbar />
         <div className="home_page10">
-          {/* <h4 className="welcometag">
-            {" "}
-            WELCOME <span className="welcometag">{username}</span>
-          </h4> */}
           <div className="exploresite">
             <img src={snippet} />
             <div className="exploredes">
@@ -65,7 +52,6 @@ const Home = () => {
         <Footer />
         <ToastContainer />
       </div>
-    </>
   );
 };
 

@@ -64,8 +64,6 @@ a {
   display:flex;
   position:relative;  
   align-items: center;
-  left:25%;
-  right:10%;
 }
 .cta{
   font-family: "Montserrat", sans-serif;
@@ -73,4 +71,12 @@ a {
 }
 .cta:hover{
   color:#FF204E;
+}
+@media screen and (max-width:1300px){
+  .navdiv{
+    justify-content: left;
+  }
+  .logo{
+    visibility: hidden;
+  }
 }
