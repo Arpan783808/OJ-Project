@@ -1,7 +1,7 @@
 # CODESTER-ONLINE JUDGE
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/56a3f109-f68d-4c6f-9774-e227192c232e" height="500" width="500" />
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/56a3f109-f68d-4c6f-9774-e227192c232e" marginLeft="100" height="500" width="500" />
 
 ## Table of Contents
 
@@ -14,12 +14,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   7. Compiler
   8. Frontend
   9. Environment Variables
-  10. Running the Project
-  11. Local Development
-  12. Docker Deployment
-  13. Usage
-  14. Contributing
-  15. License
+  10. Local Development
+  11. Docker Deployment
+  12. Usage
+  13. Contributing
+  14. License
 
 
 
@@ -66,8 +65,8 @@ This is a full-stack online judge platform built with the MERN stack (MongoDB, E
 #### Clone the repository:
 
 ```git
-git clone https://github.com/your-username/online-judge-backend.git
-cd OJProject/backend
+git clone https://github.com/Arpan783808/OJ-Project.git
+cd OJ-Project/backend
 ```
 
 #### Install dependencies:
@@ -79,7 +78,7 @@ npm install
 #### Setup compiler:
 
 ```git
-cd OJproject/compiler
+cd OJ-Project/compiler
 ```
 #### Install dependencies:
 
@@ -90,7 +89,7 @@ npm install
 ### Frontend
 #### Setup frontend
 ```git
-cd OJproject/frontend
+cd OJ-Project/frontend
 ```
  #### Install dependencies:
  ```git
@@ -106,10 +105,10 @@ MONGO_URI=your_mongo_uri
 JWT_SECRET=your_jwt_secret
 ```
 #### Compiler
-
+```
 REACT_APP_BACKEND_URL=backend_url
 REACT_APP_COMPILER_URL=compiler_url
-
+```
 ## Running the Project
 ### Local Development
 #### Backend
@@ -167,28 +166,55 @@ volumes:
   mongo-data:
 
 ```
-
+## Docker Deployment
 ### Start all servers with a single docker compose command
 ```git
 Docker-compose up -d
 ```
 
 ## Usage
-1. User Registration and Login: Users can register and log in to the platform.
-2. Problem Management: Admin users can create, edit, and delete problems.
-3. Code Submission: Users can submit their code for problems, which will be compiled and executed.
-4. Leaderboards: Users can view their rankings and performance.
-5. Discussion Forum: Users can post questions and share their experiences.
-6. Contests Information: Users can view upcoming and recent contests from Codeforces and LeetCode.
 
 
+### 1. User Registration and Login: Users can register and log in to the platform.
+
+
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/b40eb827-b812-480e-9348-3b839240e7a3" height="300px" width="550"/>
+
+
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/11f7dbe2-6157-46d6-ac6f-1c0f69db3d7b" height="300px" width="550"/>
+
+
+### 2. Problem Management: users can create, view, edit, and delete problems.
+
+
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/2c4fc536-8594-4448-8591-f4f70d1ae47c" height="300px" width="550"/>
+
+
+### 3. Code Submission: Users can submit their code for problems, which will be compiled and executed.
+
+
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/3156688c-c005-4ade-a4e1-4d77d81c342f"  height="300px" width="550"/>
+
+
+### 4. Submit your code for problems and get them judged.
+
+
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/4a076f15-31e3-4e8b-8ea9-83c0c308be1f" height="300px" width="550"/>
+
+
+### 5. Leaderboard: Users can view their rankings and performance.
+
+
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/152010d4-6975-421e-bc01-17776060d523" height="300px" width="550"/>
+
+ 
 ## Contributing
 We welcome contributions from the community to enhance the Online Judge Platform. If you have ideas for new features, improvements, or bug fixes, follow these steps to contribute
 
 1. Fork the Repository: Click the 'Fork' button at the top right of this repository to create your own copy.
 2. Clone the Forked Repository: Clone your forked repository to your local machine using
 ```git
-git clone https://github.com/your-username/online-judge-platform.git
+git clone https://github.com/Arpan783808/OJ-Project.git
 ```
 3.git clone https://github.com/your-username/online-judge-platform.git
 ```git
@@ -207,3 +233,7 @@ git commit -m "Add feature: your feature name"
 
 #### Before contributing, please ensure that your changes follow the project's coding standards and guidelines.
 #### Thank you for your interest in contributing to the Online Judge Platform! 
+
+
+## LICENSE
+This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
