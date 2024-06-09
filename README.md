@@ -37,22 +37,22 @@ This is a full-stack online judge platform built with the MERN stack (MongoDB, E
 ### Technologies Used
 
 #### Frontend: React, Axios
-<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/f234f9fa-ed17-4cb4-bdc9-60342e1e0bcd" width="100" height="100" />
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/f234f9fa-ed17-4cb4-bdc9-60342e1e0bcd" width="150" height="150" />
 
 #### Backend: Node.js, Express, MongoDB, Mongoose
-<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/0f9c5307-3084-43fc-8350-771b83628b64" height="100" width="140"/>
-<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/9f13bc0d-a06c-4309-a395-dbb9447f343e" height="100" width="140"/>
-<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/6098952d-49c0-493f-9477-56c5848b5f88" height="100" width="100"/>
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/0f9c5307-3084-43fc-8350-771b83628b64" height="150" width="200"/>
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/9f13bc0d-a06c-4309-a395-dbb9447f343e" height="150" width="200"/>
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/6098952d-49c0-493f-9477-56c5848b5f88" height="150" width="150"/>
 
 #### Compiler: Node.js, Docker
-<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/b6a5412d-2a75-4b35-802f-840e79f9caf2" height="100" width="100" />
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/b6a5412d-2a75-4b35-802f-840e79f9caf2" height="150" width="150" />
 
 #### Authentication: JWT (JSON Web Token)
-<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/529011b8-896c-48d6-9a4b-0259bfc50011" height="100" width="140"/>
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/529011b8-896c-48d6-9a4b-0259bfc50011" height="150" width="250"/>
 
 #### Deployment: Docker, AWS EC2, MongoDB Atlas
 
-<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/7ec551ef-f034-4cca-af2d-9df71af7b4c2" height="100" width="100" />
+<img src="https://github.com/Arpan783808/OJ-Project/assets/123624309/7ec551ef-f034-4cca-af2d-9df71af7b4c2" height="150" width="150" />
 
 ### Prerequisites
 1. Node.js and npm installed on your machine
